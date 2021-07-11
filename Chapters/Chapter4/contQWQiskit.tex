@@ -149,7 +149,7 @@ For this section, not only is the cyclic graph considered, but a considerable nu
 
 %TODO: Modificar o texto para impessoal e nao ficar exatamente igual ao artigo.
 %TODO: Alterar formatacao das tabelas.
-Starting with the smaller $N = 2^2 = 4$ case, two non-isomorphic circulant graphs are possible to construct. $G_1$ corresponds to the cycle graph, and $G_2$ to the complete graph. Table \ref{tab:N2TRT} shows the achieved average fidelities, which were calculated with \eqref{eq:avgFid}. Comparing to the complete graph case presented in \cite{Qiang2016} , where they obtained a fidelity of $0.967 \pm 0.003$, it is possible to see that the implementation presented here slightly outperforms it in terms of fidelity.
+Starting with the smaller $N = 2^2 = 4$ case, two non-isomorphic circulant graphs are possible to construct. $G_1$ corresponds to the cycle graph, and $G_2$ to the complete graph. Table \ref{tab:N2TRT} shows the achieved average fidelities, which were calculated with equation \ref{eq:avgFid}. Comparing to the complete graph case presented in \cite{qiang2016}, where they obtained a fidelity of $0.967 \pm 0.003$, it is possible to see that the implementation presented here slightly outperforms it in terms of fidelity.
 %\vspace{-0.2cm}
 \begin{table}[!h]
 \centering
@@ -168,7 +168,7 @@ m$\setminus G$ & $G_1$               & $G_2$  \\ \hline
 In the $N = 2^3 = 8$ case, table \ref{tab:N3TRT} shows that state fidelity is greater as graph connectivity increases, and as $m$ increases. This is due to the fact that a greater $m$ implies a smaller circuit, but also an increase in error. However, graphs have less distinct eigenvalues as they are more connected, which means that a higher degree of approximation of the QFT will generally introduce less error in this cases, while keeping circuit depth lower.
 \begin{table}[!h]
 \centering
-%\resizebox{200}{30}{
+\resizebox{200pt}{30pt}{
 \begin{tabular}{| l | l | l | l | l |}
 \hline
 m$\setminus G$ & $G_1$                & $G_2$                & $G_3$                & $G_4$    \\\hline
@@ -176,13 +176,13 @@ m$\setminus G$ & $G_1$                & $G_2$                & $G_3$            
 1   & 0.894 $\pm$ 0.007 & 0.95 $\pm$ 0.01   & 0.98 $\pm$ 0.01    & 0.973 $\pm$ 0.008 \\\hline
 2   & 0.852 $\pm$ 0.009 & 0.955 $\pm$ 0.004 & 0.985 $\pm$ 0.003  & 0.990 $\pm$ 0.002 \\\hline
 \end{tabular}
-%}
+}
 \caption{Fidelity of quantum state with N=8, backend \textit{Toronto}, and t=1.}
 \label{tab:N3TRT}
 \end{table}
 \begin{table}[!h]
 \centering
-%\resizebox{\columnwidth}{35}{
+\resizebox{\columnwidth}{35pt}{
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
 \hline
 m$\setminus G$ & G1               & G2    & G3    & G4 & G5    & G6    & G7    & G8   \\ \hline
@@ -191,7 +191,7 @@ m$\setminus G$ & G1               & G2    & G3    & G4 & G5    & G6    & G7    &
 2   & 0.55 $\pm$ 0.03     & 0.71 $\pm$ 0.03     & 0.83 $\pm$ 0.02     & 0.90 $\pm$ 0.01 & 0.89 $\pm$ 0.02 & 0.75 $\pm$ 0.02 & 0.62 $\pm$ 0.04 & 0.59 $\pm$ 0.06  \\ \hline
 3   & 0.60 $\pm$ 0.03     & 0.70 $\pm$ 0.02     & 0.85 $\pm$ 0.01     & 0.92 $\pm$ 0.01 & 0.91 $\pm$ 0.01 & 0.80 $\pm$ 0.03 & 0.71 $\pm$ 0.04 & 0.69 $\pm$ 0.04   \\\hline
 \end{tabular}
-%}
+}
 \caption{Fidelity of quantum state with N=16, backend \textit{Toronto}, and t=1.}
 \label{tab:N4TRT}
 \end{table}
