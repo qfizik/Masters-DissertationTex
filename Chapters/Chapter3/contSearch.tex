@@ -1,0 +1,41 @@
+\documentclass[../../dissertation.tex]{subfiles}
+\begin{document}
+
+As was previously seen, the continuous-time quantum walk model is defined by an evolution operator obtained by solving Schrödinger's equation
+\begin{equation}
+	U(t) = e^{-iHt}.
+\end{equation}
+The search problem requires introducing an oracle to the Hamiltonian, that will mark an arbitrary vertex $m$ %meter que pertence a um conjunto de vertices marcados. chamar vertex onde tenho node.
+\begin{equation}
+	H' = -\gamma L - \ket{m}\bra{m}.
+\end{equation}
+Since the complete graph is a regular graph, the operator can be rewritten in terms of the adjacency matrix plus the marked element. Considering $\ket{0}$ is marked,
+\begin{equation}
+	U'(t) = e^{iH't} = e^{i(-\gamma L - \ket{0}\bra{0})t} = e^{i(-\gamma A + \gamma D - \ket{0}\bra{0})t} = e^{-i\gamma(A+\ket{0}\bra{0})t + i\gamma D t}.
+\end{equation}
+The degree matrix is again $D=dI$, which means it will commute with $A+\ket{0}\bra{0}$ and become a global phase
+\begin{equation}
+	U'(t) = e^{-i\gamma(A+\ket{0}\bra{0})t}e^{i\gamma D t} = \phi(t)e^{-i\gamma(A+\ket{0}\bra{0})t}.
+\end{equation}\par
+As was show by \cite{zalka1999}, the value of $\gamma$ is crucial for the success of the search. As $\gamma$ increases, the contribution of the marked element in the Hamiltonian decreases, and as $\gamma$ approaches $0$ the contribution of the adjacency matrix decreases. To find the optimum value, the Hamiltonian can be rewritten by adding multiples of the identity matrix to the adjacency matrix 
+%TODO:\textcolor{red}{H' é uma notação ruim, confunde com derivada e acredito não ser necessário aqui}
+\begin{equation}
+	H' = -\gamma(A+NI) - \ket{0}\bra{0} = -\gamma N\ket{s}\bra{s} - \ket{0}\bra{0}
+\end{equation}
+where $\ket{s} = \frac{1}{\sqrt{N}}\sum_i \ket{i}$. Now it is obvious that, for $\gamma = \frac{1}{N}$, the Hamiltonian is $H = -\ket{s}\bra{s} - \ket{0}\bra{0}$. It's eigenstates are proportional to $\ket{s}\pm\ket{w}$ and eigenvalues are $-1 - \frac{1}{\sqrt{N}}$ and $-1 + \frac{1}{\sqrt{N}}$, respectively. This means that the evolution rotates from the state of balanced superposition to the marked vertex state in time $\frac{\pi}{\Delta E} = \frac{\pi}{2}\sqrt{N}$ which is, as was shown by \cite{zalka1999}, optimal and equivalent to Grover's algorithm. Plotting $\Delta E$ as a function of $\gamma N$, as can be seen in figure \ref{fig:gamma512}, has a minimum at $\gamma N =1$. The difference between the largest eigenvalue and second largest, plotted in the y-axis, is the smallest for a value of $\gamma N = 1 \implies \gamma =\frac{1}{N}$, which will correspond to the maximum probability for the marked vertex, in optimal steps.
+
+\begin{figure}[h]
+	\centering \includegraphics[scale=0.40]{img/ContQuantumWalk/Search/gamma512.png}
+	\caption{Value of the difference between the largest eigenvalue and the second largest, plotted as a function of $\gamma N$, for $N=512$. }\label{fig:ContSearch}
+	\label{fig:gamma512}
+\end{figure}
+
+Figure \ref{fig:ContSearch} shows the evolution of the probability of the marked vertex in time, which is continuous in this model. In contrast with previous models, the distributions are smooth and reach exactly one, since the walk is allowed to evolve to exactly the ideal time steps.
+
+%figura da caminhada com passos ideais
+\begin{figure}[!t]
+	\centering \includegraphics[scale=0.40]{img/ContQuantumWalk/Search/163264.png}
+	\caption{Continuous quantum walk search for a complete graph with 16, 32 and 64 vertices.}\label{fig:ContSearch}
+\end{figure}
+
+\end{document}
