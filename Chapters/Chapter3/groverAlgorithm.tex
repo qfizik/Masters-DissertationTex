@@ -142,6 +142,13 @@ $\frac{\pi}{4\theta}$ will lead to
 	\abs{m-\widetilde{m}} \leq \frac{1}{2} \iff \abs{(2m+1)\theta - (2\widetilde{m}-1)\theta} \leq \frac{\pi}{2}.
 \end{equation}
 %TODO: Perceber estas deducoes. Perceber probabilidade de falha e relacao com a ineq. de m.
+\begin{figure}[!h]
+	%TODO: Decidir que figura por aqui, como menciono em cima para Ns grandes talvez aumentar o N ou por 4 ou mais exemplos de Ns diferentes.
+	\centering
+	\includegraphics[scale=0.40]{img/Grover/GroverOneMarked3264128256}
+	\caption{Grover one marked element temp.} 
+	\label{fig:groverOneMarked163264128}
+\end{figure}
 By definition, $(2\widetilde{m}+1)\theta = \frac{\pi}{2}$ which means that
 $\abs{\cos{((2m+1)}\theta)} \leq \abs{\sin{\theta}}$. The probability of
 failure after $m$ iterations can then be written as
@@ -155,17 +162,10 @@ Failure decreases as the number of elements increases. The run time of the algor
 \end{equation}
 since $\theta \geq \sin\theta = \frac{1}{\sqrt{N}}$. This means that, for a
 large $N$, the number of iterations that maximizes the probability of success
-will be very close to $\frac{\pi}{4}\sqrt{N}$.\par Figure
-\ref{fig:groverOneMarked163264128} was obtained by coding the apropriate
+will be very close to $\frac{\pi}{4}\sqrt{N}$.\par 
+Figure \ref{fig:groverOneMarked163264128} was obtained by coding the apropriate
 operators as to simulate the system presented in equation
 \ref{eq:groverFinalState}. 
-\begin{figure}[!h]
-	%TODO: Decidir que figura por aqui, como menciono em cima para Ns grandes talvez aumentar o N ou por 4 ou mais exemplos de Ns diferentes.
-	\centering
-	\includegraphics[scale=0.40]{img/Grover/GroverOneMarked3264128256}
-	\caption{Grover one marked element temp.} 
-	\label{fig:groverOneMarked163264128}
-\end{figure}
 The unitary evolution operator was applied approximately
 $\frac{\pi}{4}\sqrt{N}$ times and the amplitudes associated with those states
 were stored as a probability distribution. Filtering the probability of the

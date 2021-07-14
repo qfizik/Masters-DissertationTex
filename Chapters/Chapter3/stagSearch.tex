@@ -7,7 +7,13 @@ and amplifies it, and the system's state will still be described by equation
 \ref{eq:sysStateSearch}. However, instead of using a coin, the staggered model
 takes advantage of the notions of cliques and tessellations, as was shown in
 chapter \ref{sec:chap3StagWalk}, which means the unmodified evolution operator
-has to be defined for an undirected complete graph.\par
+has to be defined for an undirected complete graph.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.40]{img/StagQuantumWalk/Search/Theta163264.png}
+	\caption{Maximum probability of the marked element as a function of the $\theta$ value plotted from $0$ to $\pi$ for number of nodes $N=64,128$ and $256$.} 
+	\label{fig:stagMultTheta}
+\end{figure}\par
 
 As was previously seen, a complete graph is defined as a simple undirected
 graph where each pair of distinct vertices is connected by a unique edge.  This
@@ -17,12 +23,12 @@ minimum tessellations required to cover this structures are defined by the one
 clique that encompasses all $N$ nodes of the graph
 \begin{equation}
 	\mathscr{T}_{\alpha} = \{\{0,1,2,...,N-1\}\}.
-\end{equation}\par
+\end{equation}
 The associated polygon can then be described as the balanced superposition of
 all the nodes in the graph
 \begin{equation}
 	\ket{\alpha} = \frac{1}{\sqrt{N}} \sum_{v=0}^{N-1} \ket{v}.
-\end{equation}\par
+\end{equation}
 The Hamiltonian, as defined in \ref{eq:StagHamil}, is 
 %TODO: \textcolor{red}{falta índice no somatório}
 \begin{equation}
@@ -36,16 +42,16 @@ reduces to the single Hamiltonian case
 \begin{equation}
 	U = e^{i\theta H_\alpha}.
 	\label{eq:stagQWSearchUnmodEvo1}
-\end{equation}\par
+\end{equation}
 The choice of the $\theta$ value is an important one, since maximum probability
 is achieved at $\theta = \frac{\pi}{2}$, as shown in figure
 \ref{fig:stagMultTheta}.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[scale=0.40]{img/StagQuantumWalk/Search/Theta163264.png}
-	\caption{Maximum probability of the marked element as a function of the $\theta$ value plotted from $0$ to $\pi$ for number of nodes $N=64,128$ and $256$.} 
-	\label{fig:stagMultTheta}
-\end{figure}
+	\includegraphics[scale=0.40]{img/StagQuantumWalk/Search/163264.png}
+	\caption{Staggered quantum walk search for a complete graph with 16, 32 and 64 nodes.}
+	\label{fig:StagSearch}
+\end{figure}\par
 Since $H_\alpha^2 = I$, equation \ref{eq:stagQWSearchUnmodEvo1} can be
 rewritten as
 \begin{equation}
@@ -66,12 +72,6 @@ $\frac{\pi}{4}\sqrt{N}$ steps, as shown in figure \ref{fig:StagSearch}. This
 plot also shows that the probabilities converge to $1$ as $N$ increases.
 Because time is discretized, deviations to the ideal number of steps will
 matter less for bigger values of $N$.
-\begin{figure}[!h]
-	\centering
-	\includegraphics[scale=0.40]{img/StagQuantumWalk/Search/163264.png}
-	\caption{Staggered quantum walk search for a complete graph with 16, 32 and 64 nodes.}
-	\label{fig:StagSearch}
-\end{figure}
 Unlike Grover's algorithm, however, the parameter $\theta$ can be changed in
 order to alter how many iterations are required to achieve maximum probability
 of the marked element. Combined with the fact that one has control over which
