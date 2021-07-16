@@ -36,7 +36,7 @@ a probability associated with the chosen coin, as can be seen in figure
     \includegraphics[width=\linewidth]{img/QCircuit/CoinedQuantumWalk/DouglasWangDecrement.png}
     \caption{Decrement}
   \end{subfigure}
-  \caption{Shift operators.}
+  \caption{General circuits of the shift operator for the coined quantum walk.}
   \label{fig:douglasWangShift}
 \end{figure}
 %TODO: Melhorar o paragrafo seguinte
@@ -49,7 +49,7 @@ left or right, in the line graph example.
 				   & \qw                             & \gate{\mbox{C}}                & \ctrlo{-1}           & \ctrl{-1}                   & \qw \gategroup{2}{3}{3}{5}{.8em}{--}      
 		          } \]
 	\centering
-	\caption{Coined quantum walk circuit}
+	\caption{General circuit for the coined quantum walk.}
 	\label{fig:coinedCircuit}
 \end{figure}\par
 The coin operator will simply be a Hadamard gate acting on a single qubit. For
@@ -66,7 +66,7 @@ control states only differing by a single bit.\par
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.32]{img/Qiskit/CoinedQuantumWalk/Circuits/circCoinedQW_N3_S3.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit for the coined quantum walk, for a line graph of size $N=8$, with 3 steps and the Hadamard coin.} 
 	\label{fig:coinedQWCircuitQistkit}
 \end{figure}
 This circuit was implemented in Qiskit, as can be seen in figure
@@ -82,7 +82,7 @@ aforementioned Gray Code for more generalized instances of the gate.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.32]{img/Qiskit/CoinedQuantumWalk/Circuits/circIncr_N3_S3.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit for the increment operator for a line graph of size $N=8$.} 
 	\label{fig:incrCircuitQistkit}
 \end{figure}\par
 
@@ -93,7 +93,7 @@ repetition of these operations as a function of the number of steps required.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.32]{img/Qiskit/CoinedQuantumWalk/Circuits/circDecr_N3_S3.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit for the decrement operator for a line graph of size $N=8$.} 
 	\label{fig:decrCircuitQistkit}
 \end{figure}\par
 Lastly, the circuit is measured and the results can be seen in figure
@@ -112,7 +112,7 @@ plot, is correct.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/CoinedQuantumWalk/CoinedQW_N3_S0123.png}
-	\caption{Temp} 
+	\caption{Probability distributions of the coined quantum walk for several steps in a line graph of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend. } 
 	\label{fig:coinedQWQiskitDist}
 \end{figure}
 %TODO: Mencionar o numero de CNOTS?
