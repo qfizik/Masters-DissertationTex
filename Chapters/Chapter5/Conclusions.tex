@@ -2,6 +2,52 @@
 
 \begin{document}
 
-Place Conclusions here.
+Chapter \ref{chap:introduction} begins with a brief historical overview of the
+origins of quantum computation, starting with the early days of computer
+science all the way to quantum walks. An overview of the state of the art
+encompassing both theoretical and circuit implementations of quantum walks and
+searching problems was presented in a further section, including the relevant
+literature to the work presented in this thesis. Thisi introduction is then
+closed with an overview of the following chapters and main contributions.\par
+
+The goal of the chapter \ref{chap:QuantumWalks} was to define the theoretical
+framework associated with the three quantum walk models studied in this thesis.
+This was done in the context of the quantum walk on the line, starting with a
+brief definition of the classical random walk, followed by the discrete models
+of the quantum walk, namely the coined model and the staggered model, and
+finishing with the continuous-time quantum walk. All of the models were
+simulated in Python, and variuous plots were created in order to analyse how
+the different parameters influence how the dynamics of each walk behave.\par
+
+Chapter \ref{chap:searchingProblems} was dedicated to the study of the
+previously defined quantum walks when applied to the searching problem. It
+starts with the definition of the Grover algorithm, where a complexity analysis
+was performed, followed by the quantum walk analogue. Here, the theoretical
+explanation for the various quantum walks on complete graphs was presented,
+combined with the introduction of the oracle. Similarly to the previous
+chapter, Python was used to simulate the algorithms and study how the different
+aspects of each model affect how the the search problem evolves.\par
+
+The main contributions of this thesis are presented in chapter
+\ref{chap:qiskitImplementation}. The first contribution comes in the form
+of a systematic way of creating Qiskit circuits continuous-time quantum walks
+for a myriad of circulant graphs, by way of the quantum Fourier transform and
+Qiskits \textit{diagonal} function. Previous work by \cite{qiang2016} uses
+the concept of circulant graphs for the implementation of the CTQW model on a
+complete graph for a small number of qubits, however the present work provides
+a systematic way of generating graphs for a much greater number of circulant
+graphs, for an arbitrary number of qubits, as well as an analysis of how the
+approximate quantum Fourier transform can be used to reduce circuit depth for
+better NISQ computer results. Another contribution, that is not found on the
+literature, was the use of this method to implement search on circulant graphs
+using the continuous-time quantum walk.  The results were not as satisfactory
+as the previous dynamics example, because of the the increased circuit size due
+to the introduction of the oracle and Suzuki-Trotter iterations. This is still
+a work in progress, which will be further expanded upon in future publications.
+This chapter also contains a compilation of methods for creating circuits for
+the dynamics and search of the discrete-time quantum walk models, based mainly
+on the work of \cite{douglaswang07} and \cite{acasiete2020}, which are not
+original contributions but hopefully provide a useful overview on how to
+implement these algorithms on current quantum hardware.  
 
 \end{document}
