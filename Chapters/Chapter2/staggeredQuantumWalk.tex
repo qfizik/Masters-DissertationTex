@@ -20,7 +20,7 @@ polygon. The state associated to each polygon is
 \begin{equation}
 	\ket{u_{j}^{k}} = \frac{1}{\sqrt{\mathopen|\alpha_{j}^{k}}\mathclose|}\sum_{l\in\alpha_{j}^{k}}\ket{l}
 \end{equation}
-where $\alpha_{j}^{k}$ is the $j-th$ polygon in the $k-th$ tessellation.\par
+where $\alpha_{j}^{k}$ is the $j^{th}$ polygon in the $k^{th}$ tessellation.\par
 
 The unitary and Hermitian operator $H_k$, associated to each tessellation is
 defined in \cite{portugal2017b} as
@@ -40,10 +40,9 @@ where
 \end{equation}
 since $H_k^2 = I$, meaning that the Hamiltonian is a projection operator that,
 when expanded in a Taylor series, generates a local operator.\par
-%TODO:\textcolor{red}{trocar and por since. Posso referir livro do nielsen}\par
 
 The simplest use case of this quantum walk model is the one-dimensional
-lattice, where the minimum tessalations are
+lattice, where the minimum tessellations are
 \begin{equation}
 	\mathscr{T}_{\alpha}= \{\{2x,2x+1\}\colon x \in \mathbb{Z}\},
 \end{equation}
@@ -53,7 +52,7 @@ lattice, where the minimum tessalations are
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/StagQuantumWalk/tesselation.png}
-	\caption{} 
+	\caption{Tessellation of a line graph.} 
 	\label{fig:stagQWTesselation}
 \end{figure}
 Each element of the tessellation has a corresponding state, as can be seen in
@@ -87,7 +86,7 @@ evolution operator
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/StagQuantumWalk/stagqwMultiple.png}
-	\caption{Probability distribution for the staggered quantum walk on a line after 50 steps, with initial condition $\ket{\Psi(0)}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$, for multiple angles.} 
+	\caption{Probability distribution for the staggered quantum walk on a line after 50 steps, with initial condition $\ket{\Psi(0)}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$, for multiple values of $\theta$.} 
 	\label{fig:stagQWSimulMultTheta}
 \end{figure}
 Having defined the time evolution operator, the walk is ready to be coded with
@@ -108,15 +107,15 @@ dynamics of the system, and figure \ref{fig:stagQW2InitCond} shows the results
 of plotting the quantum walk for initial conditions  $\ket{\Psi(0)}=\ket{0}$
 and  $\ket{\Psi(0)}=\ket{1}$.
 \begin{figure}[!h]
-	\minipage{0.55\textwidth}
+	\begin{subfigure}[h]{0.50\textwidth}
 	\includegraphics[width=\linewidth]{img/StagQuantumWalk/stagqwSingle0.png}
 	\caption{$\ket{\Psi(0)}=\ket{0}$}\label{fig:fig6}
-	\endminipage\hfill
-	\minipage{0.55\textwidth}
+	\end{subfigure}\hfill
+	\begin{subfigure}[h]{0.50\textwidth}
 	\includegraphics[width=\linewidth]{img/StagQuantumWalk/stagqwSingle1.png}
 	\caption{$\ket{\Psi(0)}=\ket{1}$}\label{fig:fig7}
-	\endminipage\hfill
-	\caption{bla}
+	\end{subfigure}\hfill
+	\caption{Probability distributions for the staggered quantum walk on a line after 50 steps, for different initial conditions.}
 	\label{fig:stagQW2InitCond}
 \end{figure}
 Similarly to the coined case, each initial condition results in asymmetric
