@@ -48,6 +48,19 @@ This chapter also contains a compilation of methods for creating circuits for
 the dynamics and search of the discrete-time quantum walk models, based mainly
 on the work of \cite{douglaswang07} and \cite{acasiete2020}, which are not
 original contributions but hopefully provide a useful overview on how to
-implement these algorithms on current quantum hardware.  
+implement these algorithms on current quantum hardware.\par
+
+Based on the work presented in this thesis, future work for the study and
+implementation of quantum walks includes the following:
+\begin{itemize}
+	\item Circuit implementation of the continuous-time quantum walk search problem using circulant graphs, and how the AQFT affects circuit depth and implementability on NISQ computers. This is the goal of the next publication regarding this thesis.
+	\item Simulation, implementation and analysis of the searching problem for multiple marked elements using the staggered quantum walk model. The search problem with the SQW is not very well researched in the literature, meaning there are contributions to be made in this regard.
+	%TODO: Problemas de transporte??	
+	\item Analysis through the creation of simulation software of the continous-time quantum walk from the perspective of transport problems, such as location, perfect state transfer and standard deviation, and further analysis of the search problem for multiple marked elements.
+	%TODO: Perspetiva do locke?
+	\item Development of a method for constructing staggered quantum walk circuits for a larger variety of graphs.
+	\item Expansion of the circulant graph method for the CTQW in order to perform the walk over a larger class of graphs.
+\end{itemize}
+
 
 \end{document}
