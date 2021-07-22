@@ -69,7 +69,7 @@ where $P = \sum_x \ket{x+1}\bra{x}$.
 	               &       & \qw & {/^{\otimes n-1}}\qw      & \multigate{1}{\mbox{INCR}}&\qw &  \multigate{1}{\mbox{DECR}} & \qw \\
             	   &       &\qw & \gate{R_x(2\theta)}    & \ghost{INCR} &\gate{R_x(2\theta)}        & \ghost{DECR} & \qw \gategroup{3}{4}{4}{7}{.8em}{--}
 		          } \]
-	\caption{Staggered quantum walk circuit}
+	\caption{General circuit for the staggered quantum walk.}
 	\label{fig:stagQWCirc}
 \end{figure}\par
 Remember from equation \ref{eq:shiftMatrixQiskit} and figure
@@ -85,7 +85,7 @@ $8$ elements, meaning 3 qubits will be required, as is shown in figure
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.32]{img/Qiskit/StaggeredQW/Circuits/circStagQW_N3_S3.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit for the staggered quantum walk, for a line graph of size $N=8$ and initial condition $\ket{\psi_0}=\ket{4}$, with $3$ steps.} 
 	\label{fig:stagQWCircuitQistkit}
 \end{figure}
 The circuit starts with a Pauli-X gate in the third qubit so that $\ket{\psi_0}
@@ -102,7 +102,7 @@ seen in figure \ref{fig:stagQWQiskitDist}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/StaggeredQW/StagQW_N3_S0123.png}
-	\caption{Temp} 
+	\caption{Probability distributions of the staggered quantum walk for several steps in a line graph of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend.} 
 	\label{fig:stagQWQiskitDist}
 \end{figure}\par
 Analyzing the figure, it is clear that this model is much better suited for

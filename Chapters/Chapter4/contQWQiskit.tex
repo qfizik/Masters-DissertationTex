@@ -85,13 +85,13 @@ seen in figure \ref{fig:contCircuit}.
 	& & {/^{\otimes n}} \qw &\gate{QFT_m}  & \gate{e^{i\gamma\Lambda t}} &  \gate{QFT^{\dagger}_m} &\qw &\qw 
 		          } \]
 	\centering
-	\caption{Temp}
+	\caption{General circuit for the continuous-time quantum walk.}
 	\label{fig:contCircuit}
 \end{figure}\par
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.25]{img/Qiskit/ContQuantumWalk/Circuits/circContQW_N3_S1.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit for the continuous-time quantum walk, for a line graph of size $N=8$ and initial condition $\ket{\psi_0}=\ket{4}$, for time $t$.} 
 	\label{fig:contQWCircuitQistkit}
 \end{figure}
 The circuit can now be constructed making use of the \textit{diagonal} function
@@ -103,7 +103,7 @@ implementation of the circuit for 3 qubits or $2^3=8$ graph nodes and $t=3$.\par
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.28]{img/Qiskit/ContQuantumWalk/Circuits/circQft_N3_S1.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit of the quantum Fourier transform for a line graph of size $N=8$.} 
 	\label{fig:qftCircuitQiskit}
 \end{figure}
 %TODO: Perceber como explicar a QFT.
@@ -113,7 +113,7 @@ negation of the rotations associated with the QFT.\par
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.50]{img/Qiskit/ContQuantumWalk/Circuits/circDiag_N3_S1.png}
-	\caption{temp}
+	\caption{Qiskit circuit of the diagonal operator associated with the adjacency matrix, for a line graph of size $N=8$.}
 	\label{fig:diagCircuitQiskit}
 \end{figure}
 The circuit associated with the diagonal operator is shown in figure
