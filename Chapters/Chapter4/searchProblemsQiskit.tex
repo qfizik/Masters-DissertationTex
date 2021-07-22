@@ -60,7 +60,7 @@ can then be constructed as is shown in figure \ref{fig:groverSearchCircuit}.
 	& & {/^{\otimes n}} \qw &\gate{H}  & \gate{\mathcal{O}} &  \gate{D} & \qw &\qw \gategroup{2}{5}{2}{6}{.8em}{--}
 		          } \]
 	\centering
-	\caption{Temp}
+	\caption{General circuit for the Grover search.}
 	\label{fig:groverSearchCircuit}
 \end{figure}\par
 Consider the $3$ qubit case, where $N=8$ and solution state $\ket{4}$. The
@@ -70,7 +70,7 @@ Qiskit.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.32]{img/Qiskit/GroverQiskit/Circuits/GroverQiskitCirc_N3_M4_S3.png}
-	\caption{Temp}
+	\caption{Qiskit circuit for the Grover algorithm, for a search size of $N=8$ and $3$ steps.}
 	\label{fig:groverCircuitQistkit}
 \end{figure}\par
 %TODO:Melhorar 
@@ -79,7 +79,7 @@ means applying Hadamard gates to each qubit.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.25]{img/Qiskit/GroverQiskit/Circuits/GroverQiskitCircOracle_N3_M4_S3.png}
-	\caption{Temp}
+	\caption{Qiskit circuit of the  diagonal oracle operator in search space of size $N=8$, for marked element $\ket{m}=\ket{4}$.}
 	\label{fig:groverOracleCircuitQistkit}
 \end{figure}
 Immediately following the barrier, the first operator of the iteration process
@@ -93,7 +93,7 @@ shown in figure \ref{fig:groverDiffCircuitQistkit}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.25]{img/Qiskit/GroverQiskit/Circuits/GroverQiskitCircDiff_N3_M4_S3.png}
-	\caption{Temp}
+	\caption{Qiskit circuit of the  diagonal Grover diffusion operator in search space of size $N=8$.}
 	\label{fig:groverDiffCircuitQistkit}
 \end{figure}
 %TODO Isto esta muito fraco. 
@@ -105,7 +105,7 @@ $\ket{0}$ in between Hadamard operations.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/GroverQiskit/GroverQiskitSearch_N3_M4_S0123}
-	\caption{Temp}
+	\caption{Probability distributions of the Grover search algorithm for several steps, in a search space of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend.}
 	\label{fig:groverQiskitDist}
 \end{figure}\par
 
@@ -119,15 +119,14 @@ as the number of steps increases, so does circuit depth, meaning that the
 circuit does not achieve the maximum probability after $2$ steps due to the
 effects introduced by noise.\par
 
-Dispite the effects introduced by noise, the results are satisfactory when
+Despite the effects introduced by noise, the results are satisfactory when
 considering the properties of NISQ computers. The following sections will
-present the search problem adpated to several quantum walk models.
+present the search problem adapted to several quantum walk models.
 
 \subsection{Coined}
 Following the structure of section \ref{sec:CoinedSearchSimul}, this chapter
-aims to expand the coined quantum walk model incorporating concepts like the
-oracle and diffusion operator of the Grover algoritm, the difference being the
-creation of the circuit associatewith this alghorithm.\par 
+aims to expand the coined quantum walk model by incorporating concepts like the
+oracle and diffusion operator of the Grover search, with the purpose of generating a quantum circuit that performs this algorithm.\par 
 
 The modified unitary evolution operator is
 \begin{equation}
@@ -151,7 +150,7 @@ operation.
 				                    & {/^{\otimes n}} \qw  & \qw & \gate{G}&   \ghost{SHIFT} & \qw \gategroup{2}{4}{3}{5}{.8em}{--}
 		          } \]
 	\centering
-	\caption{Douglas wang coined quantum walk circuit}
+	\caption{General circuit for the search problem using the coined quantum walk model.}
 	\label{fig:coinedSearchCircuit}
 \end{figure}\par
 
@@ -164,7 +163,7 @@ the walk.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.21]{img/Qiskit/CoinedQuantumWalk/Search/Circuits/CoinedSearchQiskitCirc_N3_M0_S5.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit for the search problem using the coined quantum walk model, for a complete graph of size $N=8$ and with $5$ steps.} 
 	\label{fig:coinedQWSearchCircuitQistkit}
 \end{figure}\par
 
@@ -176,7 +175,7 @@ in figure \ref{fig:coinedQWSearchOracleCircuitQistkit}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.30]{img/Qiskit/CoinedQuantumWalk/Search/Circuits/CoinedSearchQiskitCircOracle_N3_M4_S5.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit of the  diagonal oracle operator in the coined quantum walk search problem, for a complete graph of size $N=8$, with marked element $\ket{m}=\ket{4}$.} 
 	\label{fig:coinedQWSearchOracleCircuitQistkit}
 \end{figure}
 It is the same oracle as in the Grover search of figure
@@ -188,7 +187,7 @@ in figure \ref{fig:coinedQWSearchDiffCircuitQistkit}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.30]{img/Qiskit/CoinedQuantumWalk/Search/Circuits/CoinedSearchQiskitCircDiff_N3_M4_S5.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit of the  diagonal diffusion operator in the coined quantum walk search problem, for a complete graph of size $N=8$.} 
 	\label{fig:coinedQWSearchDiffCircuitQistkit}
 \end{figure}\par
 
@@ -205,7 +204,7 @@ implemented as in figure \ref{fig:coinedQWSearchShiftCircuitQistkit}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.27]{img/Qiskit/CoinedQuantumWalk/Search/Circuits/CoinedSearchQiskitCircShift_N3_M4_S5.png}
-	\caption{Temp} 
+	\caption{Qiskit circuit of the  flip-flop shift operator in the coined quantum walk search problem, for a complete graph of $N=8$.} 
 	\label{fig:coinedQWSearchShiftCircuitQistkit}
 \end{figure}\par
 %TODO: Estudar porque e que a dist muda logo para 0 (diffusion) em steps = 5
@@ -225,15 +224,15 @@ chapter.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/CoinedQuantumWalk/Search/CoinedQiskitSearch_N3_M4_S0245}
-	\caption{Temp } 
+	\caption{Probability distributions of the coined quantum walk search problem for several steps, in a complete graph of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend.} 
 	\label{fig:coinedSearchQiskitDist}
 \end{figure}\par
 
 As was done previously, other models of the quantum walks that do
 not require coins or iterations will be studied in the following sections, in
 the context of the searching problem. The staggered quantum walk, for example,
-should be able to present better results when ran in a NISQ computer, due to
-its coinless nature.
+should be able to present better results when ran in a NISQ computer, considering the
+smaller Hilbert space due to its coinless nature.
 
 \subsection{Staggered}
 Recalling from section \ref{sec:StagSearchSimul}, the staggered quantum walk on
@@ -278,7 +277,7 @@ in a complete graph will then be as shown in figure
 	& & {/^{\otimes n}} \qw& \gate{H} &\gate{\mathcal{O}} &\gate{H}  & \gate{e^{i\theta\mathcal{O}_0}} &  \gate{H} &\qw \gategroup{2}{5}{2}{8}{.8em}{--} \\
 		          } \]
 	\centering
-	\caption{Temp}
+	\caption{General circuit for the search problem using the staggered quantum walk model.}
 	\label{fig:stagSearchCircuit}
 \end{figure}
 Since only one tesselation is required, there is no need for the Suzuki-Trotter
@@ -296,7 +295,7 @@ qubits will be needed and the circuit will be as in figure \ref{fig:stagSearchCi
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.35]{img/Qiskit/StaggeredQW/Search/Circuits/StagSearchCircuit_N3_M0_S3.png}
-	\caption{Temp}
+	\caption{Qiskit circuit for the search problem using the staggered quantum walk model, for a complete graph of size $N=8$, with $3$ steps and a value of $\theta = \frac{\pi}{2}$.}
 	\label{fig:stagSearchCircQistkit}
 \end{figure}
 Similar to previous examples, the circuit begins with the uniform superposition
@@ -311,7 +310,7 @@ Qiskit as is shown in figure \ref{fig:stagSearchUniOpCircQistkit}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/StaggeredQW/Search/Circuits/StagUniOpCircuit_N3_M0_S3.png}
-	\caption{Temp}
+	\caption{Qiskit circuit of the  diagonal diffusion operator in the staggered quantum walk search problem, for a complete graph of size $N=8$ and a value of $\theta = \frac{\pi}{2}$.}
 	\label{fig:stagSearchUniOpCircQistkit}
 \end{figure}
 This circuit is very similar to the one in figure
@@ -328,10 +327,10 @@ are shown in figure \ref{fig:stagSearchResultsToronto}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/StaggeredQW/Search/stagSearchToronto_N3_S0123.png}
-	\caption{Temp}
+	\caption{Probability distributions of the staggered quantum walk search problem for several steps, in a complete graph of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend.}
 	\label{fig:stagSearchResultsToronto}
 \end{figure}
-The circuit for each step of the walk was run both in the \textit{Qasm}
+The circuit for each step of the walk was run both in the \textit{QASM}
 simulator and IBM's backend named Toronto. The experiment was performed with
 $3000$ shots in both cases, and the probability distributions show that this
 model is indeed more suited for a NISQ computer than the previous case.
@@ -410,7 +409,7 @@ which can be easily translated into circuit form as in figure
 	&  {/^{\otimes n}} \qw &\gate{\mbox{H}}  & \gate{\mbox{$e^{i\frac{Ot}{r}}$}} & \gate{\mbox{F}} &\gate{\mbox{$e^{i\gamma\frac{\Lambda t}{r}}$}} & \gate{\mbox{F$^{\dagger}$}} &\qw \gategroup{2}{4}{2}{7}{.8em}{--}
 		          } \]
 	\centering
-	\caption{Temp}
+ 	\caption{General circuit for the search problem using the continuous-time quantum walk model.}
 	\label{fig:contSearchCircuit}
 \end{figure}\par
 Consider the case of a graph of size $N=2^3=8$ and trotter number of $r=1$. The
@@ -418,7 +417,7 @@ corresponding Qiskit circuit is as shown in figure \ref{fig:contSearchCircuit}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.30]{img/Qiskit/ContQuantumWalk/Search/Circuits/circContSearch_N3_S2.png}
-	\caption{Temp}
+	\caption{Qiskit circuit for the search problem using the continuous-time quantum walk model, for a complete graph of size $N=8$, time $t$ and a value of $\gamma = \frac{1}{8}$.}
 	\label{fig:contSearchCircQistkit}
 \end{figure}
 The system starts out in an uniform superposition followed by the application
@@ -430,7 +429,7 @@ the operator corresponding to the oracle that was defined in equation
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.30]{img/Qiskit/ContQuantumWalk/Search/Circuits/circOracle_N3_S2.png}
-	\caption{Temp}
+	\caption{Qiskit circuit of the  diagonal oracle operator in the continuous-time quantum walk search problem, for a complete graph of size $N=8$, marked element $\ket{m}=\ket{4}$ and time $t=\frac{\pi}{2} \sqrt{8}$.}
 	\label{fig:contSearchOracleCircQistkit}
 \end{figure}\par
 
@@ -441,12 +440,12 @@ circuit depth.\par
 
 Lastly, the operator associated with the adjacency matrix is shown in figure
 \ref{fig:contSearchAdjCircQistkit}. Since $A$ is the diagonal adjacency matrix
-of a complete graph, it is easily implemented using the aforemention
+of a complete graph, it is easily implemented using the aforementioned
 \textit{diagonal} function.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.30]{img/Qiskit/ContQuantumWalk/Search/Circuits/circAjd_N3_S2.png}
-	\caption{Temp}
+	\caption{Qiskit circuit of the  diagonal operator associated with the adjacency matrix in the continuous-time quantum walk search problem, for a complete graph of size $N=8$, marked element $\ket{m}=\ket{4}$, time $t=\frac{\pi}{2} \sqrt{8}$ and $\gamma = \frac{1}{8}$.}
 	\label{fig:contSearchAdjCircQistkit}
 \end{figure}\par
 
@@ -460,7 +459,7 @@ time.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/ContQuantumWalk/Search/ContQW_N3_S2.png}
-	\caption{Temp}
+	\caption{Probability distributions of the continuous-time quantum walk search problem for several time intervals, in a complete graph of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend.}
 	\label{fig:contSearchResultCircQistkit}
 \end{figure}
 In practice, however, greater probability for this element is achieved when
@@ -468,7 +467,7 @@ only $1$ iteration is performed since the smaller circuit seems to produce a
 greater fidelity of $0.71$, when compared to a fidelity of $0.59$ for the $2$
 iteration case. The approximate quantum Fourier transform also has a positive
 impact, increasing fidelity from $0.60$ when the full QFT circuit is used, to
-the aforemention $0.71$ when only Hadamard transformations are performed.\par
+the aforementioned $0.71$ when only Hadamard transformations are performed.\par
 In conclusion, when comparing the several quantum walk models studied in
 previous sections, the coined quantum walk seems to be the least suited for
 running the search problem in NISQ computers, followed by the continuous-time
