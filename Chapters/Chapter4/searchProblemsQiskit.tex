@@ -1,7 +1,7 @@
 \documentclass[../../dissertation.tex]{subfiles}
 \begin{document}
 
-\subsection{Grover}
+\subsection{Grover's Algorithm}
 As was previously seen in section \ref{sec:GrovSearchSimul}, Grover's algorithm
 is a quantum alternative to unstructured search problems. Consider the case of
 finding element $x_0$ out of an unordered list of size $N$. Worst case
@@ -70,7 +70,7 @@ Qiskit.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.32]{img/Qiskit/GroverQiskit/Circuits/GroverQiskitCirc_N3_M4_S3.png}
-	\caption{Qiskit circuit for the Grover algorithm, for a search size of $N=8$ and $3$ steps.}
+	\caption{Qiskit circuit for the Grover algorithm, for a search space of size $N=8$ and $3$ steps.}
 	\label{fig:groverCircuitQistkit}
 \end{figure}\par
 %TODO:Melhorar 
@@ -123,7 +123,7 @@ Despite the effects introduced by noise, the results are satisfactory when
 considering the properties of NISQ computers. The following sections will
 present the search problem adapted to several quantum walk models.
 
-\subsection{Coined}
+\subsection{Coined Quantum Walk}
 Following the structure of section \ref{sec:CoinedSearchSimul}, this chapter
 aims to expand the coined quantum walk model by incorporating concepts like the
 oracle and diffusion operator of the Grover search, with the purpose of generating a quantum circuit that performs this algorithm.\par 
@@ -234,7 +234,7 @@ the context of the searching problem. The staggered quantum walk, for example,
 should be able to present better results when ran in a NISQ computer, considering the
 smaller Hilbert space due to its coinless nature.
 
-\subsection{Staggered}
+\subsection{Staggered Quantum Walk}
 Recalling from section \ref{sec:StagSearchSimul}, the staggered quantum walk on
 a complete graph requires a single tessellation with associated polygon
 \begin{equation}
@@ -358,7 +358,7 @@ iterations due to the Suzuki-Trotter approximation and it will also require
 extra operations to implement the oracle, which was not the case in the pure
 dynamics example of section \ref{sec:ContQiskit}.
 
-\subsection{Continuous}
+\subsection{Continuous-Time Quantum Walk}
 As was seen in section \ref{sec:ContSearchSimul}, the unitary operator
 associated with the continuous time quantum walk model can be modified as to
 mark an element for amplitude amplification

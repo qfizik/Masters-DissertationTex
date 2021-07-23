@@ -32,13 +32,15 @@ The main contributions of this thesis are presented in chapter
 \ref{chap:qiskitImplementation}. The first contribution comes in the form
 of a systematic way of creating Qiskit circuits continuous-time quantum walks
 for a myriad of circulant graphs, by way of the quantum Fourier transform and
-Qiskits \textit{diagonal} function. Previous work by \cite{qiang2016} uses
+Qiskits \textit{diagonal} function, presented in the work by \cite{chagassantos21}. Previous work by \cite{qiang2016} uses
 the concept of circulant graphs for the implementation of the CTQW model on a
 complete graph for a small number of qubits, however the present work provides
 a systematic way of generating graphs for a much greater number of circulant
 graphs, for an arbitrary number of qubits, as well as an analysis of how the
 approximate quantum Fourier transform can be used to reduce circuit depth for
-better NISQ computer results. Another contribution, that is not found on the
+better NISQ computer results. 
+%TODO: Grover
+Another contribution, that is not found on the
 literature, was the use of this method to implement search on circulant graphs
 using the continuous-time quantum walk.  The results were not as satisfactory
 as the previous dynamics example, because of the the increased circuit size due
@@ -52,15 +54,15 @@ implement these algorithms on current quantum hardware.\par
 
 Based on the work presented in this thesis, future work for the study and
 implementation of quantum walks includes the following:
-\begin{itemize}
+\begin{enumerate}
 	\item Circuit implementation of the continuous-time quantum walk search problem using circulant graphs, and how the AQFT affects circuit depth and implementability on NISQ computers. This is the goal of the next publication regarding this thesis.
 	\item Simulation, implementation and analysis of the searching problem for multiple marked elements using the staggered quantum walk model. The search problem with the SQW is not very well researched in the literature, meaning there are contributions to be made in this regard.
 	%TODO: Problemas de transporte??	
-	\item Analysis through the creation of simulation software of the continous-time quantum walk from the perspective of transport problems, such as location, perfect state transfer and standard deviation, and further analysis of the search problem for multiple marked elements.
+	\item Analysis through the creation of simulation software of the continous-time quantum walk from the perspective of transport problems, such as localization, perfect state transfer and mixing time, and further analysis of the search problem for multiple marked elements.
 	%TODO: Perspetiva do locke?
 	\item Development of a method for constructing staggered quantum walk circuits for a larger variety of graphs.
 	\item Expansion of the circulant graph method for the CTQW in order to perform the walk over a larger class of graphs.
-\end{itemize}
+\end{enumerate}
 
 
 \end{document}
