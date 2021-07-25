@@ -14,9 +14,9 @@ by increasing desirable states' amplitudes through a process called
 classical counterpart \cite{boyer1996}, being able to find a target element in
 expected time $\mathcal{O}(\sqrt{N})$ .\par
 
-The inner workings of the black box will now be exapanded upon. Instead of
-direactly evaluating the elements, the searching indexes will be considered,
-and the number of elements is defined as$N=2^{n}$, $n$ being a positive
+The inner workings of the black box will now be expanded upon. Instead of
+directly evaluating the elements, the searching indexes will be considered,
+and the number of elements defined as $N=2^{n}$, $n$ being a positive
 integer. The next step is to define a function $f : \{0,1,...,N-1\}$ that
 returns $1$ when evaluating the desired (marked) element and $0$ otherwise.
 Since this function is to be applied to a quantum system, a unitary operator
@@ -37,7 +37,7 @@ written as
 	\mathcal{O}\ket{x} = (-1)^{f(x)}\ket{x} .
 \end{equation}\par
 
-This offers a bit of insight into the oracle, it \textit{marks} the solutions
+This offers a bit of insight into the oracle: it \textit{marks} the solutions
 to the search problem by applying a phase shift to the solutions. 
 %Tight bounds on quantum searching
 %TODO: Decidir se meto a explicacao de complexidade aqui ou se refraseio esta parte.
@@ -47,7 +47,7 @@ amplitude amplification section of Grover's search, starting with the creation
 of a uniform superposition
 \begin{equation}
 	%TODO: decidir se introduzo o operador Hadamard nestas explicacoes ou se reservo para o qiskit.
-	\ket{\Psi_0} = H^{\otimes n}\ket{x} = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1} \ket{x}
+	\ket{\psi_0} = H^{\otimes n}\ket{x} = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1} \ket{x}
 \end{equation}
 where $H^{\otimes n}$ is the \textit{Hadamard} operator applied to an arbitrary
 number of states.\par
@@ -59,7 +59,7 @@ to guess the correct item.  This is where amplitude amplification comes into
 effect, by means of a second unitary operator
 \begin{equation}
 	%TODO: Decidir se mantenho os H's.
-	\mathcal{D} = (2\ket{\Psi_0}\bra{\Psi_0} - I) = H^{\otimes n}(2\ket{0}\bra{0} - I)H^{\otimes n}   
+	\mathcal{D} = (2\ket{\psi_0}\bra{\psi_0} - I) = H^{\otimes n}(2\ket{0}\bra{0} - I)H^{\otimes n}   
 \end{equation}
 This operator applies a conditional phase shift, with every computational basis
 state except $\ket{0}$ receiving a phase shift. This can also be described as
@@ -83,7 +83,7 @@ The evolution operator that performs one step of the algorithm is then
 \end{equation}
 and after $t$ steps the state of the system is
 \begin{equation}
-	\ket{\Psi(t)} = \mathcal{U}^t\ket{\Psi_0}.
+	\ket{\psi(t)} = \mathcal{U}^t\ket{\psi_0}.
 	\label{eq:groverFinalState}
 \end{equation}
 
@@ -94,14 +94,14 @@ reached in \textit{approximately} $\frac{\pi}{4}\sqrt{N}$ iterations. In order
 to show that this is the case, an iteration will be formally defined here as
 the process that transforms the state
 \begin{equation}
-	\ket{\Psi(k,l)} = k\ket{i_0} + \sum_{i\neq i_0}l\ket{i}
+	\ket{\psi(k,l)} = k\ket{i_0} + \sum_{i\neq i_0}l\ket{i}
 	\label{eq:groverQuantumRegister}
 \end{equation}
 %TODO: duvida aqui com o l e o k. Tentar explicar por outras palavras.
-into state $\ket{\Psi(\frac{N-2}{N}k + \frac{2(N-1)}{N}l, \frac{N-2}{N}l -
+into state $\ket{\psi(\frac{N-2}{N}k + \frac{2(N-1)}{N}l, \frac{N-2}{N}l -
 \frac{2}{N}k)}$. Amplitudes $l$ and $k$ are real numbers that statisfy $k^2 +
-(N-1)l^2=1$. Running $m$ iterations over state $\ket{\Psi_0}$ will eventually
-lead to state $\ket{\Psi_j} = \ket{\Psi(k_j,l_j)}$ after the $j-th$ iteration,
+(N-1)l^2=1$. Running $m$ iterations over state $\ket{\psi_0}$ will eventually
+lead to state $\ket{\psi_j} = \ket{\psi(k_j,l_j)}$ after the $j-th$ iteration,
 where $k_0 = l_0 = \frac{1}{\sqrt{N}}$ and
 %TODO: Perceber melhor isto dos ks e js e tentar por mais diferente do bbht.
 \begin{equation}
@@ -111,18 +111,18 @@ where $k_0 = l_0 = \frac{1}{\sqrt{N}}$ and
 	\end{cases}\label{eq:groverKandJ1}
 \end{equation}
 %TODO: Perceber/explicar melhor a associacao do valor de psiM com o elemento marcado.
-After the last iteration, the system will be in state $\ket{\Psi_m}$ with a
+After the last iteration, the system will be in state $\ket{\psi_m}$ with a
 certain amplitude. If that amplitude corresponds to the marked element $x_0$,
 then it is said that the algorithm was successful.\par 
 
 \cite{grover1996} proves that there exists a value of $m < \sqrt{2N}$ such that
 the probability of success is at least $\frac{1}{2}$. However the probability
 of success does not linearly increase with the number of iterations, in fact
-for $m=\sqrt{2N}$ the system will succeed less that $1$ in $10$ times.
-\cite{boyer1996} argues that an explicit value of $m$ is needed, and it is
+for $m=\sqrt{2N}$ the system will succeed less than $1$ in $10$ times.
+\cite{boyer1996} argues that an explicit value of $m$ is needed, and this can be
 achieved by finding a closed form formula for $k_j$ and $l_j$. The first step
 is to define an angle $\theta$ so that $\sin^2\theta = \frac{1}{N}$, and
-equation \ref{eq:groverKandJ1} will become
+equation \eqref{eq:groverKandJ1} becomes
 %TODO: Perceber melhor a escolha do valor de theta. Perceber como e que a eq. groverkandj1 fica assim. A funcao seno e coseno obedecem a equacao k2 + (n-t)l2 = 1. Ver no livro do renato.
 \begin{equation}
 	\begin{cases}
@@ -132,12 +132,12 @@ equation \ref{eq:groverKandJ1} will become
 \end{equation}
 In order to maximize the probability of success, one must find a value of $m$
 so that $k_m = 1$ and $l_m$ is as close to $0$ as possible. The value of $k$
-after $m$ iterations will be at it's maximum when $\sin{((2m+1)\theta)} =
-\frac{\pi}{2}$, and solving the trigonometric equation leads to a value of $m =
+after $m$ iterations will be at its maximum when $\sin{((2m+1)\theta)} =
+\frac{\pi}{2}$. Solving the trigonometric equation leads to a value of $m =
 \frac{\pi-2\theta}{4\theta}$. Conversely, $l_{\widetilde{m}} = 0$ when
 $\widetilde{m} = \frac{\pi-2\theta}{4\theta}$ for an integer number of
-$\widetilde{m}$. Setting $m$ to the nearest lower integer of
-$\frac{\pi}{4\theta}$ will lead to
+$\widetilde{m}$. Setting $m$ to
+$\floor{\frac{\pi}{4\theta}}$ will lead to
 \begin{equation}
 	\abs{m-\widetilde{m}} \leq \frac{1}{2} \iff \abs{(2m+1)\theta - (2\widetilde{m}-1)\theta} \leq \frac{\pi}{2}.
 \end{equation}
@@ -163,9 +163,9 @@ Failure decreases as the number of elements increases. The run time of the algor
 since $\theta \geq \sin\theta = \frac{1}{\sqrt{N}}$. This means that, for a
 large $N$, the number of iterations that maximizes the probability of success
 will be very close to $\frac{\pi}{4}\sqrt{N}$.\par 
-Figure \ref{fig:groverOneMarked163264128} was obtained by coding the apropriate
+Figure \ref{fig:groverOneMarked163264128} was obtained by coding the appropriate
 operators as to simulate the system presented in equation
-\ref{eq:groverFinalState}. 
+\eqref{eq:groverFinalState}. 
 The unitary evolution operator was applied approximately
 $\frac{\pi}{4}\sqrt{N}$ times and the amplitudes associated with those states
 were stored as a probability distribution. Filtering the probability of the
@@ -181,16 +181,16 @@ iterations to achieve maximum probability changes. In fact, the latter part of
 this section will be used to discuss the case where one single iteration of
 this algorithm is enough to achieve maximum probability.\par 
 
-Firstly, one must define a set $A$ that is composed of all the marked elements
-and set $B$ of the remaining. The state from equation
-\ref{eq:groverQuantumRegister} will become
+Firstly, one must define a set $A$ collecting all the marked elements
+and set $B$ with the remaining ones. The state from equation
+\eqref{eq:groverQuantumRegister} will become
 \begin{equation}
-	\ket{\Psi(k,l)} =\sum_{i\in A} k\ket{i} + \sum_{x \in B}l\ket{x}.
+	\ket{\psi(k,l)} =\sum_{i\in A} k\ket{i} + \sum_{x \in B}l\ket{x}.
 \end{equation}
 %TODO: Perceber o valor the theta again.
 Assuming $t$ marked elements, iterating over this state will result in
 \begin{equation}
-	\ket{\Psi(\frac{N-2t}{N}k + \frac{2(N-1)}{N}l, \frac{N-2}{N}l - \frac{2}{N}k)}.
+	\ket{\psi(\frac{N-2t}{N}k + \frac{2(N-1)}{N}l, \frac{N-2}{N}l - \frac{2}{N}k)}.
 \end{equation}
 Choosing an angle $\theta$ such that $sin^2\theta=\frac{t}{N}$, allows the
 definition of the amplitudes associated with the states after $j$ iterations 
@@ -230,9 +230,9 @@ $\floor{\frac{\pi}{4}\sqrt{\frac{N}{2}}}$ for each $N$.
 %:TODO: Expandir a explicacao da figura, pensar no que escrever
 Again, the probability of success approaches $1$ as $N$ increases. However,
 comparing to figure \ref{fig:groverOneMarked163264128}, the number of
-iterations that maximize probability is lower for each $N$, in agreement with
-equation \ref{eq:multipleMarkedIterations}. Work by \cite{zalka1999} shows that
-the time complexity associated with Grover's algorithm is optimal, and that
+iterations that maximizes probability is lower for each $N$, in agreement with
+equation \eqref{eq:multipleMarkedIterations}. Work by \cite{zalka1999} shows that
+the time complexity associated to Grover's algorithm is optimal, and that
 parallelization of quantum searching should not yield better results.
 
 \subsection{Single-Shot Grover}
@@ -250,9 +250,9 @@ An interesting case arises when the number of marked elements is set to $t=\frac
 	\label{GroverSingleShot3264128256}
 \end{figure}
 Note that there are an infinite number of negative and positive solutions, but
-equation \ref{eq:singleShotTheta} reflects the only relevant one in this
+equation \eqref{eq:singleShotTheta} reflects the only relevant one in this
 context. As a consequence, amplitudes associated with state
-$\ket{\Psi(k_1,l_1)}$ become 
+$\ket{\psi(k_1,l_1)}$ become 
 \begin{equation}
 	\begin{cases}
 		k_{1} = \frac{1}{\sqrt{t}} \sin{((2+1)\theta)} = \frac{1}{\sqrt{\frac{N}{4}}} \sin{(3\frac{\pi}{6})} = \frac{2}{\sqrt{N}}
@@ -261,13 +261,12 @@ $\ket{\Psi(k_1,l_1)}$ become
 \end{equation}
 %:TODO: Escrever mais sobre a figura!
 These results show that the amplitudes associated with the marked states double
-in relation to $\ket{\Psi_0}$ and the remaining states disappear after only one
-iteration. This behaviour can be seen in figure
+in relation to $\ket{\psi_0}$ and the remaining states disappear after only one
+iteration. This behavior can be seen in figure
 \ref{GroverSingleShot3264128256}, where the total probability of marked
 elements reaches $1$ after a single shot of the Grover procedure, once the
 number of marked elements is $\frac{1}{4}$ of the total elements.\par 
 %TODO: Melhor preview das proximas sessoes.
-The next sections will present the search problem in the context of quantum
-walks. They are generalizations of Grover's algorithm, but implemented
-implemented in graphs.  
+The following sections will present the search problem in the context of quantum
+walks. They are generalizations of Grover's algorithm, but implemented in graphs.  
 \end{document}

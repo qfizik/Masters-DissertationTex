@@ -1,10 +1,10 @@
 \documentclass[../../dissertation.tex]{subfiles}
 \begin{document}
 
-The process for defining the search problem in this model is similar to the
+Defining the search problem in this model is similar to the
 coined quantum walk case. The oracle still inverts the sign of a certain state
 and amplifies it, and the system's state will still be described by equation
-\ref{eq:sysStateSearch}. However, instead of using a coin, the staggered model
+\eqref{eq:sysStateSearch}. However, instead of using a coin, the staggered model
 takes advantage of the notions of cliques and tessellations, as was shown in
 chapter \ref{sec:chap3StagWalk}, which means the unmodified evolution operator
 has to be defined for an undirected complete graph.
@@ -18,7 +18,7 @@ has to be defined for an undirected complete graph.
 As was previously seen, a complete graph is defined as a simple undirected
 graph where each pair of distinct vertices is connected by a unique edge.  This
 is a special case, because this is the only connected graph that can be covered
-by a single tesselation, due to the fact that the graph is it's own clique. The
+by a single tessellation, due to the fact that the graph is it's own clique. The
 minimum tessellations required to cover this structures are defined by the one
 clique that encompasses all $N$ nodes of the graph
 \begin{equation}
@@ -29,12 +29,12 @@ all the nodes in the graph
 \begin{equation}
 	\ket{\alpha} = \frac{1}{\sqrt{N}} \sum_{v=0}^{N-1} \ket{v}.
 \end{equation}
-The Hamiltonian, as defined in \ref{eq:StagHamil}, is 
+The Hamiltonian, as defined in equation \eqref{eq:StagHamil}, is 
 %TODO: \textcolor{red}{falta índice no somatório}
 \begin{equation}
 	H_\alpha = 2\sum_0^1\ket{\alpha}\bra{\alpha} - I = 2\ket{\alpha_0}\bra{\alpha_0} - I
 \end{equation}\par
-The unmodified evolution operator from equation \ref{eq:stagWalkUnmodOp}
+The unmodified evolution operator from equation \eqref{eq:stagWalkUnmodOp}
 \begin{equation}
 	U = e^{i\theta_{k}H_{k}}...e^{i\theta_{2}H_{2}}e^{i\theta_{1}H_{1}}
 \end{equation}
@@ -43,7 +43,7 @@ reduces to the single Hamiltonian case
 	U = e^{i\theta H_\alpha}.
 	\label{eq:stagQWSearchUnmodEvo1}
 \end{equation}
-The choice of the $\theta$ value is an important one, since maximum probability
+The choice of the value of $\theta$ is quite important, since maximum probability
 is achieved at $\theta = \frac{\pi}{2}$, as shown in figure
 \ref{fig:stagMultTheta}.
 \begin{figure}[!h]
@@ -52,12 +52,12 @@ is achieved at $\theta = \frac{\pi}{2}$, as shown in figure
 	\caption{Probability of one marked element in the staggered quantum walk search, as a function of the number of steps, for complete graphs of size $N=16$, $32$ and $64$.}
 	\label{fig:StagSearch}
 \end{figure}\par
-Since $H_\alpha^2 = I$, equation \ref{eq:stagQWSearchUnmodEvo1} can be
+Since $H_\alpha^2 = I$, equation \eqref{eq:stagQWSearchUnmodEvo1} can be
 rewritten as
 \begin{equation}
 	U = e^{-i\frac{\pi}{2} H_\alpha} = \cos{\frac{\pi}{2}I} + i\sin{\frac{\pi}{2}H_\alpha} = i H_\alpha = i(2\ket{\alpha_0}\bra{\alpha_0} - I).
 \end{equation}\par
-Having defined the the evolution operator associated with the complete graph,
+Having defined the evolution operator associated to the complete graph,
 the next step is to use the oracle
 \begin{equation}
 	\mathcal{O} = I_N - 2\ket{0}\bra{0},
@@ -75,8 +75,8 @@ matter less for bigger values of $N$.
 Unlike Grover's algorithm, however, the parameter $\theta$ can be changed in
 order to alter how many iterations are required to achieve maximum probability
 of the marked element. Combined with the fact that one has control over which
-structure this search problem is performed on, the staggered quantum walk is a
-more general algorithm when compared to Grover's search, both being equivalent
+structure this search problem is performed, the staggered quantum walk search is
+more general than Grover's search, both being equivalent
 when a complete graph is considered and $\theta = \frac{\pi}{2}$.\par
 Finally, the next section will present the search problem using the
 continuous-time quantum walk model. Since time is not discretized, a finer

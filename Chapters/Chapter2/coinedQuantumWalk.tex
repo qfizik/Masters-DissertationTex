@@ -1,25 +1,8 @@
 \documentclass[../../dissertation.tex]{subfiles}
 \begin{document}
-% 	    \subsection{[TEMP Artigos relevantes] }
-% 	        MAIS MOEDAS.
-% 	        aharonov1993 - Pasta introqw/Coin \\
-% 	        \textbf{aharonov2001 - Pasta introqw/Coin} - definiçao da QW  ;shift operator mod n \\
-% 	        ambainis2001 - Pasta introqw/Coin \\
-% 	        carteret2005- Implementacao - Pasta introqw/Coin \\
-% 	        inui2003 -  - Pasta introqw/Coin \\
-% 	        kendon2006 - Introducao historia CQ - Pasta introqw/Coin \\
-% 	        shenvi2002 - Relacao com grover pg. 10\\
-% 	        Resto da pasta.
 
-% 	    \subsection{Texto}
-
-
-
-%TODO: IMPORTANTE! Substituir as captions das figuras.
-%TODO: IMPORTANTE! Falar do espaco de hilbert. Decidir se aqui ou noutro capitulo. 
-%TODO: Este primeiro paragrafo nao esta muito bom.
-In the quantum case, the walker is a quantum system whose position on a
-discretely numbered line, is described by a vector $\ket{x}$ in Hilbert Space.
+In the quantum case, the walker is a system whose position on a
+discretely numbered line, is described by a vector $\ket{x}$ in Hilbert space.
 The next position of the system will depend, in part, of a unitary operator,
 which can be viewed as a quantum coin.
 %TODO: \textcolor{red}{O operador unitário não é somente da moeda, precisa
@@ -33,13 +16,13 @@ coin is a unitary operator defined as
 %TODO: Decidir se ponho as letras ou explico de outra maneira.
 \begin{equation}
 	\begin{cases}
-		C\ket{0}\ket{x} = a\ket{0}\ket{x} + b\ket{1}\ket{x}\\
-		C\ket{1}\ket{x} = c\ket{0}\ket{x} + d\ket{1}\ket{x},
+		C\ket{0} = a\ket{0} + b\ket{1}\\
+		C\ket{1} = c\ket{0} + d\ket{1},
 	\end{cases}
 \end{equation}
 where $a$, $b$, $c$ and $d$ are the amplitudes associated with each outcome of
 the coin toss. One of the most commonly used coins is the unbiased coin, also
-known as Hadamard operator
+known as the Hadamard operator
 \begin{equation}
 	H = \begin{pmatrix} 
 		a & c\\
@@ -51,6 +34,7 @@ known as Hadamard operator
 	   		       \end{pmatrix},
 \end{equation}
 which will be the one used in this example.\par 
+
 The Hilbert space of the system is $\mathscr{H} = \mathscr{H}_{C} \otimes
 \mathscr{H}_{P}$, where $\mathscr{H}_{C}$ is the two-dimensional Hilbert space
 associated with the coin and $\mathscr{H}_P$ is the Hilbert space of the
@@ -71,9 +55,6 @@ that can also be described by
 \end{equation}
 It follows that the operator that describes the dynamics of the quantum walk
 will be given by 
-%TODO: \textcolor{red}{Não necessariamente é o Hadamard, poderia ser uma coin
-%qualquer. Você pode explicar também que a H é a sem viés.}
-%TODO: Perceber melhor a deducao do operador unitario e decidir se o demonstro aqui.
 \begin{equation}
 	U = S(C\otimes I) = S(H\otimes I). 
 	\label{eq:coinedUnmarkedOperator}
@@ -81,35 +62,35 @@ will be given by
 Consider a quantum system located at $\ket{x = 0}$ with coin state $\ket{0}$,
 for $t=0$. It's state will be described by
 \begin{equation}
-	\ket{\Psi(0)} = \ket{0}\ket{x=0}.
+	\ket{\psi(0)} = \ket{0}\ket{x=0}.
 	\label{eq:coinedQWInitCond0}
 \end{equation}
 After $t$ steps 
 \begin{equation}
-	\ket{\Psi(t)}=U^{t}\ket{\Psi(0)},
+	\ket{\psi(t)}=U^{t}\ket{\psi(0)},
 \end{equation}
 more explicitly
 \begin{equation}
-	\ket{\Psi(0)}\xrightarrow[]{\text{$U$}}\ket{\Psi(1)}\xrightarrow[]{\text{$U$}}\ket{\Psi(2)}\xrightarrow[]{\text{$U$}} (...) \xrightarrow[]{\text{$U$}}\ket{\Psi(t)}.
+	\ket{\psi(0)}\xrightarrow[]{\text{$U$}}\ket{\psi(1)}\xrightarrow[]{\text{$U$}}\ket{\psi(2)}\xrightarrow[]{\text{$U$}} (...) \xrightarrow[]{\text{$U$}}\ket{\psi(t)}.
 \end{equation}\par
-In summary, the coined quantum walk algorithm consists on applying the coin
+In summary, the coined quantum walk algorithm consists of applying the coin
 operator followed by the shift operator a certain number of times. Iterating
-this twice, evolves the system to the following respective states
+this twice, evolves the system to the following states
 %TODO: \textcolor{red}{seria bom especificar que é na moeda, ou até mesmo dizer que o quantum walk consiste da aplicação da moeda e logo em seguida o shift}
 \begin{equation}
-	\ket{\Psi(1)} = \frac{\ket{0}\ket{x=-1}+\ket{1}\ket{x=1}}{\sqrt{2}}
+	\ket{\psi(1)} = \frac{\ket{0}\ket{x=-1}+\ket{1}\ket{x=1}}{\sqrt{2}}
 \end{equation}
 \begin{equation}
-	\ket{\Psi(2)} = \frac{\ket{0}\ket{x=-2}+\ket{1}\ket{x=0}+\ket{0}\ket{x=0}-\ket{1}\ket{x=2}}{2}
+	\ket{\psi(2)} = \frac{\ket{0}\ket{x=-2}+\ket{1}\ket{x=0}+\ket{0}\ket{x=0}-\ket{1}\ket{x=2}}{2}
 \end{equation}
 If one were to measure the system after the first application of $\mathcal{U}$,
 it would be expected to see the walker at $x=1$ with probability $P(x) =
-\frac{1}{2}$, and at $x=-1$ with $P(x) = \frac{1}{2}$ aswell. Measure the
+\frac{1}{2}$, and at $x=-1$ with $P(x) = \frac{1}{2}$. Measure the
 system $t$ times, after each application of $\mathcal{U}$, and the result is a
-binomial probability distribution similar to the one in
+binomial probability distribution similar to the one in figure
 \ref{fig:MultClassicalWalk72180450}. The conclusion is that repetitive
 measurement of a coined quantum walk system reduces to the classical case,
-which means that any desired quantum behaviour is lost. \par
+which means that any desired quantum behavior is lost. \par
 
 It is possible, however, to make use of the quantum correlations between
 different positions to generate constructive or destructive interference, by
@@ -117,16 +98,16 @@ applying the Hadamard and shift operators successively without intermediary
 measurements.  The consequences of interference between states become very
 apparent after only 3 iterations 
 \begin{equation}
-	\ket{\Psi(3)} = \frac{\ket{1}\ket{x=-3}-\ket{0}\ket{x=-1}+2(\ket{0}+\ket{1})\ket{x=1}+\ket{0}\ket{x=3}}{2\sqrt{2}}\label{eq:12}.
+	\ket{\psi(3)} = \frac{\ket{1}\ket{x=-3}-\ket{0}\ket{x=-1}+2(\ket{0}+\ket{1})\ket{x=1}+\ket{0}\ket{x=3}}{2\sqrt{2}}\label{eq:12}.
 \end{equation}
-%TODO: Decidir se deixo ficar o sigma=0.54t ou se menciono simplesmente que e proporcional a t.
+
 Even though an unbiased coin was used, this state is not symmetric around the origin and the probability distributions will not be centered in the origin. Moreover, \cite{REN1} shows that the standard deviation will be
 \begin{equation}
 	\sigma(t) \approx 0.54t .
 \end{equation}
 This means that the standard deviation for the coined quantum walk grows
 linearly in time, unlike the classical case which grows with $\sqrt{t}$, as was
-seen in equation \ref{eq:classicalWalkDeviation}. The implication is that the
+seen in equation \eqref{eq:classicalWalkDeviation}. The implication is that the
 quantum walk displays \textit{ballistic} behaviour, as is reviewed in
 \cite{andraca2012}. This behaviour is usually defined in the context of a
 moving free particle with unit velocity in a single direction, which is
@@ -153,7 +134,7 @@ studied in a later chapter.\par
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/CoinedQuantumWalk/CoinedMultiple_psi0_3264128.png}
-	\caption{Probability distribution for the coined quantum walk on a line, after $32$, $64$ and $128$ steps, with initial condition $\ket{\Psi(0)}=\ket{0}\ket{x=0}$ and the Hadamard coin.} 
+	\caption{Probability distribution for the coined quantum walk on a line, after $32$, $64$ and $128$ steps, with initial condition $\ket{\psi(0)}=\ket{0}\ket{x=0}$ and the Hadamard coin.} 
 	\label{fig:coinedQWDist0}
 \end{figure}
 In order to study this distribution, a simulation of the coined quantum walk
@@ -174,7 +155,7 @@ understand where the asymmetry comes from.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/CoinedQuantumWalk/CoinedMultiple_psi1_3264128.png}
-	\caption{Probability distribution for the coined quantum walk on a line, after $32$, $64$ and $128$ steps, with initial condition $\ket{\Psi(0)}=-\ket{1}\ket{x=0}$ and the Hadamard coin.} 
+	\caption{Probability distribution for the coined quantum walk on a line, after $32$, $64$ and $128$ steps, with initial condition $\ket{\psi(0)}=-\ket{1}\ket{x=0}$ and the Hadamard coin.} 
 	\label{fig:coinedQWDist1}
 \end{figure}
 The Hadamard operator flips the sign of state $\ket{1}$, hence more terms are
@@ -184,31 +165,31 @@ induce movement to the right, the result is as shown in
 initial condition 
 %TODO: \textcolor{red}{cuidado com a notação embaixo dos kets, e esse sinal negativo é necessário? acredito que não.} Pagina 30 do renato, perceber melhor o sinal.
 \begin{equation}
-	\ket{\Psi(0)} = \ket{1}\ket{x=0},
+	\ket{\psi(0)} = \ket{1}\ket{x=0},
 	\label{eq:coinedQWInitCond1}
 \end{equation}
 would result in more cancellations when the coin state is $\ket{0}$, thus the
 walker would be more likely found in the left-hand side of the graph. This is
 indeed what happens, as figure \ref{fig:coinedQWDist1} is a mirror image of
 figure \ref{fig:coinedQWDist0}. The walker still moves away from the origin
-with ballistic behaviour, but in opposite direction. The peaks behave in a
+with ballistic behavior, but in the opposite direction. The peaks behave in a
 similar fashion, being instead found at $x \approx -\frac{t}{\sqrt{2}}$.\par
 
 In order to obtain a symmetrical distribution, one must superpose the state in
-equation \ref{eq:coinedQWInitCond0} with the state in equation
+equation \eqref{eq:coinedQWInitCond0} with the state in equation
 \ref{eq:coinedQWInitCond1}. However, in order to not cancel terms before the
 calculation of the probability distribution, one must multiply state $\ket{1}$
 with the imaginary unit, $i$ 
 %TODO:\textcolor{red}{o sinal pode ser justificado apenas aqui}
 %TODO: Justificar que o sinal de i pode ser +-.
 \begin{equation}
-	\ket{\Psi(0)} = \frac{\ket{0}+i\ket{1}}{\sqrt{2}}\ket{x=0}.
+	\ket{\psi(0)} = \frac{\ket{0}+i\ket{1}}{\sqrt{2}}\ket{x=0}.
 	\label{eq:12}
 \end{equation}
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[scale=0.40]{img/CoinedQuantumWalk/CoinedMultiple_psi01_3264128}
-	\caption{Probability distribution for the coined quantum walk on a line, after $32$, $64$ and $128$ steps, with initial condition $\ket{\Psi(0)}=\frac{\ket{0}-i\ket{1}}{\sqrt{2}}\ket{x=0}$ and the Hadamard coin.} 
+	\caption{Probability distribution for the coined quantum walk on a line, after $32$, $64$ and $128$ steps, with initial condition $\ket{\psi(0)}=\frac{\ket{0}-i\ket{1}}{\sqrt{2}}\ket{x=0}$ and the Hadamard coin.} 
 	\label{fig:coinedQWDist01}
 \end{figure}
 This works because the entries of the Hadamard operator are real numbers. Terms
@@ -218,11 +199,11 @@ walk can proceed to both left and right, as it is shown in figure
 is spread over the range $[-\frac{t}{\sqrt{2}},-\frac{t}{\sqrt{2}}]$ with peaks
 around $x \approx \pm \frac{t}{\sqrt{2}}$. This means that if the position of
 the walker was measured at the end, it would be equally probable to find him
-either in the left side or the right side of the graph , which is not possible
+either in the left side or the right side of the graph which is not possible
 in a classical diffusive motion.\par 
 
 All of the previous examples are in sharp contrast with the classical random
-walk distribution in figure \ref{fig:MultClassicalWalk72180450}. There, maximum
+walk distribution in figure \ref{fig:MultClassicalWalk72180450}. There, the maximum
 probability is reached at $x=0$ since there are approximately equal steps in
 both directions.  Furthermore, the further the vertex is away from the origin,
 the less likely the walker is to be found there. However, in the quantum case,

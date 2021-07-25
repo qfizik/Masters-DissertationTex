@@ -1,8 +1,8 @@
 \documentclass[../../dissertation.tex]{subfiles}
 \begin{document}
 
-As was seen in section \ref{sec:chap3StagWalk}, the elements of each
-tesselation of a discretely numbered cycle can be described by states
+As was discussed in section \ref{sec:chap3StagWalk}, the elements of each
+tessellation of a discretely numbered cycle can be described by states
 \begin{equation}
         \ket{\alpha_x} = \frac{\ket{2x} + \ket{2x+1}}{\sqrt{2}},
 \end{equation}
@@ -16,14 +16,13 @@ These states allow the construction of the Hamiltonians
 \begin{equation}
         H_\beta = 2\sum_{x=-\infty}^{+\infty}\ket{\beta_{x}}\bra{\beta_x} - I,
 \end{equation}
-as was seen in equations \ref{eq:stagSimulHalpha} and \ref{eq:stagSimulHbeta}.\par
+as in equations \eqref{eq:stagSimulHalpha} and \eqref{eq:stagSimulHbeta}.\par
 
 Following the implementation presented in the work of \cite{acasiete2020},
 these operators can be rewritten in matrix form 
 \begin{equation}
 	H_\alpha = I \otimes X,
 \end{equation}
-%TODO: ESCREVER EQUACAO MATRICIAL DO HBETA
 \begin{equation} 
 	H_\beta = 
 	\begin{pmatrix}
@@ -32,20 +31,20 @@ these operators can be rewritten in matrix form
 	1 & \cdots & 0
 	\end{pmatrix},
 \end{equation} 
-which are very useful representations for the construction of the circuit.\par
+which turn out to be very useful representations for the construction of the circuit.\par
 
-As was shown in equation \ref{eq:stagSimulUniOp}, the unitary evolution
+As was shown in equation \eqref{eq:stagSimulUniOp}, the unitary evolution
 operator is
 %TODO: DESCOBRIR SE A OS US ESTAO NA ORDEM CORRETA. 
 \begin{equation}
 	U = e^{i\theta H_\beta}e^{i\theta H_\alpha} = U_\beta U_\alpha, 
 \end{equation} 
-and knowing that
+knowing that
 %TODO: TENTAR DESCOBRIR MELHOR MANEIRA DE REPRESENTAR ISTO. SERA QUE PRECISO DA MATRIZ TODA?  
 \begin{equation} 
 	R_x(\theta) = e^{\frac{-i\theta X}{2}}, 
 \end{equation} 
-then each of the evolution operators associated with the different tesselation
+then each of the evolution operators associated with the different tessellation
 Hamiltonians will be 
 \begin{equation} 
 	U_\alpha = I \otimes R_x(\theta), 
@@ -72,15 +71,15 @@ where $P = \sum_x \ket{x+1}\bra{x}$.
 	\caption{General circuit for the staggered quantum walk.}
 	\label{fig:stagQWCirc}
 \end{figure}\par
-Remember from equation \ref{eq:shiftMatrixQiskit} and figure
+Remember from equation \eqref{eq:shiftMatrixQiskit} and figure
 \ref{fig:douglasWangShift} that these permutation operators can be implemented
 as increment and decrement gates, defined in the work of \cite{douglaswang07}.
 Therefore, the circuit for the staggered quantum walk on the line can be
-constructed as is shown in figure \ref{fig:stagQWCirc}.\par 
+built as shown in figure \ref{fig:stagQWCirc}.\par 
 
 The next step is to implement the circuit in Qiskit, in order to test it in a
 real quantum computer. Here, the walk will take place in a cyclic graph with
-$8$ elements, meaning 3 qubits will be required, as is shown in figure
+$8$ elements, which means that 3 qubits will be required, as shown in figure
 \ref{fig:stagQWCircuitQistkit}.
 \begin{figure}[!h]
 	\centering
@@ -96,9 +95,8 @@ $U_\beta$ is applied, making use of the increment and decrement gates defined
 in figures \ref{fig:incrCircuitQistkit} and \ref{fig:decrCircuitQistkit}. Note
 that now, because this model does not require a coin, these gates do not need
 to be controlled, meaning that the largest multi-controlled NOT gate will not
-be needed, making it more NISQ-friendly. This procedure is repeated
-$3$ times, and the resulting probability distributions after measurement can be
-seen in figure \ref{fig:stagQWQiskitDist}. 
+be needed, making the circuit more NISQ-friendly. This procedure is repeated
+$3$ times, and the resulting probability distributions after measurement are depicted in figure \ref{fig:stagQWQiskitDist}. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/StaggeredQW/StagQW_N3_S0123.png}
@@ -106,9 +104,9 @@ seen in figure \ref{fig:stagQWQiskitDist}.
 	\label{fig:stagQWQiskitDist}
 \end{figure}\par
 Analyzing the figure, it is clear that this model is much better suited for
-running in current quantum hardware. Even though the probability distribution
-was somewhat affected by noise, the dynamics of the walk are relatively
-unaffected by noise in the Toronto backend experiment. The highest fidelity was
+running in current NISQ hardware. Even though the probability distribution
+was somewhat affected by noise, the dynamics of the walk is relatively
+unaffected in the Toronto backend experiment. The highest fidelity was
 achieved for $2$ steps, with a value of approximately $0.95$, and the remaining
 steps ranging from $0.91$ to $0.92$.  Again, it may seem counter-intuitive that
 a higher fidelity is achieved for a larger circuit, compared to $0$ steps for
@@ -117,7 +115,7 @@ probability distribution.\par
 
 Nevertheless, because this discrete model requires ever more operations with
 the increase of steps, it will eventually become intractable for NISQ
-technology. For this reason, the next model studied in this work is one where
+technology. This justifies that the next model studied in this work is one where
 the circuit will be constant in time.
 
 \end{document}

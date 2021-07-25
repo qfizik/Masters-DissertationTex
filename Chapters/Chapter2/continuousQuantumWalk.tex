@@ -25,7 +25,7 @@ states that form the basis for the Hilbert space. The continuous-time quantum
 walk model will also be described by a differential equation, the Schrödinger
 equation
 \begin{equation}
-	i\hbar \frac{d\ket{\Psi(t)}}{dt} = \hat{H} \ket{\Psi(t)}, \label{shrodinger}
+	i\hbar \frac{d\ket{\psi(t)}}{dt} = \hat{H} \ket{\psi(t)}, \label{shrodinger}
 \end{equation}
 where $\hat{H} = -\gamma L$ is the Hamiltonian of the system. More explicitly,
 \begin{equation}
@@ -36,19 +36,19 @@ where $\hat{H} = -\gamma L$ is the Hamiltonian of the system. More explicitly,
 	\end{cases}.
 	\label{Hamilt}
 \end{equation}\par
-A general state of a system $\ket{\Psi(t)}$ can be written as a function of
-it's complex amplitudes 
+A general state of a system $\ket{\psi(t)}$ can be written as a function of
+its complex amplitudes 
 %TODO: \textcolor{red}{acredito que seja contrária a relação, as amplitudes que são descritas pelo estado através da equação 28}
 \begin{equation}
-	q_i = \braket{i|\Psi(t)},
+	q_i = \braket{i|\psi(t)},
 \end{equation}
-which means \ref{shrodinger} can be rewritten as 
+which means equation \eqref{shrodinger} can be rewritten as 
 \begin{equation}
 	i\hbar \frac{dq_i(t)}{dt} = \sum_j \hat{H}_{ij} q_j(t).
 	\label{eq:contWalkShrod}
 \end{equation}
-Comparing equations \ref{eq:contWalkShrod} and \ref{eq:classicalContWalk}, the
-Laplacian is replaced with the Hamiltonian, and the probabilities with
+Comparing equations \eqref{eq:contWalkShrod} and \eqref{eq:classicalContWalk}, the
+Laplacian is replaced by the Hamiltonian, and the probabilities by
 amplitudes. One of the main differences is the complex phase $i$, which will
 result in a very different behaviour. 
 %TODO: \textcolor{red}{você pode dizer que a 29 é uma quantização da 24}\par
@@ -69,14 +69,14 @@ evolution operator can be written in terms of the adjacency matrix
 since the degree matrix becomes a global phase.
 %that can be verified by expanding the %exponential function in Taylor series.
 %Demonstrar com eq dif ordinarias de variaveis separaveis.
-Applying this operator to an initial condition $\Psi(0)$, will give the state
+Applying this operator to an initial condition $\psi(0)$, will give the state
 of the system at a time $t$
 \begin{equation}
-	\ket{\Psi(t)} = U(t)\ket{\Psi(0)}.
+	\ket{\psi(t)} = U(t)\ket{\psi(0)}.
 \end{equation}\par
 
 Considering a uni-dimensional quantum system, each vertex
-will have at most 2 other neighboring vertices, reducing equation \ref{Hamilt}
+will have at most 2 other neighboring vertices, reducing equation \eqref{Hamilt}
 to
 \begin{equation}
 	\hat{H}_{ij} = \begin{cases} 
@@ -86,20 +86,20 @@ to
 	\end{cases}
 \end{equation}\par
 
-For a more detailed visualization, this quantum walk model was coded in python
+For a more detailed visualization, this quantum walk model was coded in Python
 and figure \ref{fig:contdist0} was obtained setting the transition rate to
-$\gamma=\frac{1}{2\sqrt{2}}$ the initial condition to $\ket{\Psi(0)} = \ket{0}$ 
+$\gamma=\frac{1}{2\sqrt{2}}$ the initial condition to $\ket{\psi(0)} = \ket{0}$ 
 %TODO: \textcolor{red}{cortou a figura}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/ContQuantumWalk/ctqwMultipleTime.png}
-	\caption{Probability distribution for the continuous-time quantum walk on a line, at $t=40$, $80$ and $120$, with initial condition $\ket{\Psi(0)}=\ket{0}$ and $\gamma=\frac{1}{2\sqrt{2}}$.} 
+	\caption{Probability distribution for the continuous-time quantum walk on a line, at $t=40$, $80$ and $120$, with initial condition $\ket{\psi(0)}=\ket{0}$ and $\gamma=\frac{1}{2\sqrt{2}}$.} 
 	\label{fig:contdist0}
 \end{figure}
 A brief look at figure \ref{fig:contdist0} reveals several similarities to
 previous models. The property of having two peaks away from the origin and low
-probability near the origin is present across all the quantum walks, however in
-the continuous case a symmetric initial condition is not needed. In the
+probability near the origin is present across all the quantum walks. However, in
+the continuous case, a symmetric initial condition is not needed. In the
 staggered quantum walk model, the propagation of the walk could be altered by
 changing the values of $\theta$, whereas in this case different values of
 $\gamma$ and time will influence the probability distribution.\par
@@ -109,7 +109,7 @@ Altering the initial condition will also differ in the
 continuous-time example. For example, setting the initial condition to the
 balanced superposition of states $\ket{0}$ and $\ket{1}$ has no effect on the
 overall pattern of the probability distribution as can be seen in figure
-\ref{fig:contdist2}. Both peaks still are still present and at the same
+\ref{fig:contdist2}. Both peaks are still present and at the same
 distance from the origin, with intermediate amplitudes being attenuated
 relative to figure \ref{fig:contdist0}. This behavior is in contrast with the previous
 discrete-time cases, where a change in the initial condition would dictate the
@@ -117,15 +117,16 @@ number of peaks and where they would appear.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/ContQuantumWalk/ctqwMultipleGammaSup.png}
-	\caption{Probability distribution for the continuous-time quantum walk on a line, at $t=100$, with initial condition $\ket{\Psi(0)}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$, for multiple values of $\gamma$.} 
+	\caption{Probability distribution for the continuous-time quantum walk on a line, at $t=100$, with initial condition $\ket{\psi(0)}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$, for multiple values of $\gamma$.} 
 	\label{fig:contdist2}
 \end{figure}
 Figure \ref{fig:contdist2} also shows the influence of the transition rate
-$\gamma$. As would be expected from equation \ref{eq:contSimulUniOp}, the
+$\gamma$. As would be expected from equation \eqref{eq:contSimulUniOp}, the
 effects are very similar to altering time, since both parameters are
 multiplying in the exponential.\par
-In conclusion, the purpose of this chapter was to present a helpful overview of
-several different models of the quantum walk. The probability distributions are
+
+In conclusion, the purpose of this chapter was to present an overview of
+several different models of a quantum walk. The probability distributions are
 very distinct from the classical case, but relatively similar to each other.
 The bigger differences between the models come from the size of the associated
 Hilbert space. The staggered and continuous-time quantum walks have
@@ -133,11 +134,11 @@ Hilbert spaces proportional to the space of the walker, whereas the coined
 quantum walk also requires a space for the coin. It might seem unimportant now,
 but it will play a major role when these models are translated into circuits,
 since the size of the Hilbert space will have a direct relation with the number
-of qubits required to perform the walk, which are a scarce resource for
+of qubits required to perform the walk, which is a scarce resource for
 \textit{Noisy intermediate-scale quantum} (NISQ) computers. Considering the
 case of the coined quantum walk on a simple line graph, only one extra qubit
-will be needed but, as will be seen in the next chapter, the search problem is
-optimal when performed over a complete graph, which in the coined case will
+will be needed. However, as will be seen in the next chapter, the search problem is
+optimal when performed over a complete graph which, in the coined case, will
 double the number of required qubits. 
 %TODO: \textcolor{red}{precisa de um fechamento aqui também, alguns resultdos e
 %referências mais talvez}

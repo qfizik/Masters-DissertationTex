@@ -4,14 +4,14 @@
 %TODO: Como ainda nao fiz o chap2 este paragrafo esta incompleto.
 The motivation behind the contents in this dissertation is to create an
 expanded overview on  the topic of quantum random walks. To better
-contextualize the rest of this thesis, annex \ref{sec:PostulatesQM} presents
+contextualize the rest of this thesis, appendix \ref{sec:PostulatesQM} presents
 the basic concepts and mathematical tools needed to study quantum walks. \par
 
 Chapter \ref{chap:QuantumWalks} consists of the study of three major quantum
 random walk models, more specifically the discrete-time coined quantum walk,
 the continuous-time quantum walk and the staggered quantum walk. For each of
-these models, this work presents the theoretical framework as well as Python
-implementations. In these simulations, the dynamics of the walks are analised
+these models, this work presents the theoretical framework as well as the corresponding Python
+implementations. In these simulations, the dynamics of the walks are analyzed
 by changing various parameters, plotting the resulting probability
 distributions and seeing how these parameters alter the shape, propagation and
 other features of the quantum random walks.\par
@@ -27,8 +27,8 @@ algorithm. \par
 Finally, chapter \ref{chap:qiskitImplementation} is dedicated to constructing
 circuits for the models previously defined, using IBM's software
 \textit{Qiskit} and their hardware. The first three sections are used to create
-circuits for the dynamics of the walks. The biggest contribution being the
-circulant graph approach to building diagonal operators for the continuous-time
+circuits for the dynamics of the walks. The biggest contribution is the
+circulant graph approach to build diagonal operators for the continuous-time
 quantum walk, which can be easily translated to Qiskit circuits. Although work
 by \cite{qiang2016} pioneered this approach, the work presented in this thesis
 aims to give a clear description on how to build these circuits in Qiskit and
@@ -41,13 +41,16 @@ The last section shows how introduce an oracle to the various circuits in order
 to perform a searching problem. For the continuous-time case, circulant graphs
 are again used in an original implementation of the searching problem making
 use of diagonal operators and the Suzuki-Trotter expansion.\par
-In the context of this thesis, the following publications were created.
-\begin{enumerate}
-	\item Jaime Santos, Bruno Chagas, Rodrigo Chaves. Quantum Walks on a Superconducting Quantum computer. (submitted)
-	\item Jaime Santos, Bruno Chagas. Implementing Grover's algorithm on a Superconducting Quantum Computer. (submitted)
-	\item Jaime Santos, Bruno Chagas. Searching with Continuous-Time Quantum Walks. (in preparation)
-	
-\end{enumerate}
+The work reported in this dissertation is partially documented in a paper and a poster submitted in June 2021:
+\begin{itemize}
+	\item Jaime Santos, Bruno Chagas, Rodrigo Chaves. Quantum Walks on a Superconducting Quantum computer. (submitted to SBRC 2021 - WQuantum / Comunicação e Computação Quântica)
+	\item Jaime Santos, Bruno Chagas. Implementing Grover's algorithm on a Superconducting Quantum Computer. (submitted to the 2nd European Quantum Technologies Virtual Conference )
+\end{itemize}
+A third publication
+\begin{itemize}
+    \item Jaime Santos, Bruno Chagas. Searching with Continuous-Time Quantum Walks. (in preparation)
+\end{itemize}
+is being prepared at the moment of writing.
 %BRUNO: eu colocaria os trabalhos aqui (artigo + pôster), ou na referências e citaria no texto
 
 \end{document}

@@ -4,18 +4,17 @@ The staggered quantum walk (SQW) case aims to spread a transition probability to
 neighboring vertices with discrete time steps. The notion of adjacency comes
 from cliques\footnote{A clique is defined as the subset of vertices of an
 	undirected graph such that every two distinct vertices in each clique
-are adjacent.}, and the initial stage of this walk consists in partitioning the
+are adjacent.}, and the initial stage of this walk consists of partitioning the
 graph in several different cliques. This is called tessellation, and it is
 defined as the division of the set of vertices into disjoint cliques. An
 element of a tessellation $\mathscr{T}$ is called a polygon, and it's only
-valid if if all of its vertices belong to the clique in $\mathscr{T}$. The set
+valid if all of its vertices belong to the clique in $\mathscr{T}$. The set
 of polygons of each tessellation must cover all vertices of the graph, and the
 set of tessellations
-($\mathscr{T}_{1}$,$\mathscr{T}_{2}$,...,$\mathscr{T}_{k}$) must cover all
+($\mathscr{T}_{1}$,$\mathscr{T}_{2}$,...,$\mathscr{T}_{k}$) must cover all the
 edges.\par 
 
-These definitions allow the construction of operators $H_1$,$H_2$,...,$H_k$
-that will be used to propagate the probability amplitude locally, in each
+These definitions allow the construction of operators $H_1$,$H_2$,...,$H_k$ to propagate the probability amplitude locally, in each
 polygon. The state associated to each polygon is
 \begin{equation}
 	\ket{u_{j}^{k}} = \frac{1}{\sqrt{\mathopen|\alpha_{j}^{k}}\mathclose|}\sum_{l\in\alpha_{j}^{k}}\ket{l}
@@ -78,15 +77,15 @@ The Hamiltonian evolution operator reduces to
 	U = e^{i\theta H_\beta}e^{i\theta H_\alpha}
 	\label{eq:stagSimulUniOp}
 \end{equation}
-and applying it to an initial condition $\ket{\Psi(0)}$ results in the time
+and applying it to an initial condition $\ket{\psi(0)}$ results in the time
 evolution operator
 \begin{equation}
-	U\ket{\Psi(t)} = U^t\ket{\Psi(0)}
+	U\ket{\psi(t)} = U^t\ket{\psi(0)}
 \end{equation}\par
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/StagQuantumWalk/stagqwMultiple.png}
-	\caption{Probability distribution for the staggered quantum walk on a line after 50 steps, with initial condition $\ket{\Psi(0)}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$, for multiple values of $\theta$.} 
+	\caption{Probability distribution for the staggered quantum walk on a line after 50 steps, with initial condition $\ket{\psi(0)}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$, for multiple values of $\theta$.} 
 	\label{fig:stagQWSimulMultTheta}
 \end{figure}
 Having defined the time evolution operator, the walk is ready to be coded with
@@ -95,32 +94,32 @@ probability distribution spreads through time.
 %TODO:\textcolor{red}{você pode acrescentar que o $\theta$ terá um papel
 %similar ao $\gamma$ no controle do desvio-padrão}
 For the first case study, the initial condition will be a uniform superposition
-of states $\ket{0}$ and $\ket{1}$ and the $\theta$ value will be varied in
+of states $\ket{0}$ and $\ket{1}$ and the value of $\theta$ will be varied in
 order to understand how this parameter impacts the walk, as can be seen in
 figure \ref{fig:stagQWSimulMultTheta}. The overall structure of the
-probability distribution is very similar for the different values of $\theta$,
+probability distribution is very similar for different values of $\theta$,
 the difference being that the walker is more likely to be found further away
 from the origin as the angle increases.\par
 
 Another interesting case study is to see how the initial condition affects the
 dynamics of the system, and figure \ref{fig:stagQW2InitCond} shows the results
-of plotting the quantum walk for initial conditions  $\ket{\Psi(0)}=\ket{0}$
-and  $\ket{\Psi(0)}=\ket{1}$.
+of plotting the quantum walk for initial conditions  $\ket{\psi(0)}=\ket{0}$
+and $\ket{\psi(0)}=\ket{1}$.
 \begin{figure}[!h]
 	\begin{subfigure}[h]{0.50\textwidth}
 	\includegraphics[width=\linewidth]{img/StagQuantumWalk/stagqwSingle0.png}
-	\caption{$\ket{\Psi(0)}=\ket{0}$}\label{fig:fig6}
+	\caption{$\ket{\psi(0)}=\ket{0}$}\label{fig:fig6}
 	\end{subfigure}\hfill
 	\begin{subfigure}[h]{0.50\textwidth}
 	\includegraphics[width=\linewidth]{img/StagQuantumWalk/stagqwSingle1.png}
-	\caption{$\ket{\Psi(0)}=\ket{1}$}\label{fig:fig7}
+	\caption{$\ket{\psi(0)}=\ket{1}$}\label{fig:fig7}
 	\end{subfigure}\hfill
 	\caption{Probability distributions for the staggered quantum walk on a line after 50 steps, for different initial conditions.}
 	\label{fig:stagQW2InitCond}
 \end{figure}
 Similarly to the coined case, each initial condition results in asymmetric
-probability distributions, $\ket{\Psi(0)}=\ket{0}$ leads to a peak  in the
-left-hand side while condition $\ket{\Psi(0)}=\ket{1}$ results in a peak in the
+probability distributions, $\ket{\psi(0)}=\ket{0}$ leads to a peak  in the
+left-hand side, while condition $\ket{\psi(0)}=\ket{1}$ results in a peak in the
 right-hand side. As was shown in figure \ref{fig:stagQWSimulMultTheta}, the
 uniform superposition of both these conditions results in a symmetric
 probability distribution.\par So far, only discrete-time quantum walks have
