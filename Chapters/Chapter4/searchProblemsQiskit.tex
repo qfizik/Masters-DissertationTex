@@ -2,10 +2,11 @@
 \begin{document}
 
 \subsection{Grover's Algorithm}
-As discussed in section \ref{sec:GrovSearchSimul}, Grover's algorithm
-is a quantum process to address unstructured search problems. Consider the case of
+As discussed in section \ref{sec:GrovSearchSimul}, Grover's algorithm is a
+quantum process to address unstructured search problems. Consider the case of
 finding element $x_0$ out of an unordered list of size $N$. For the worst case
-scenario, a classical algorithm would need to check every element of the list, therefore requiring $N$ steps.\par
+scenario, a classical algorithm would need to check every element of the list,
+therefore requiring $N$ steps.\par
 
 The first stage of Grover's algorithm is to create an uniform superposition of
 all states in the system
@@ -108,7 +109,8 @@ $\ket{0}$ placed between Hadamard operations.
 	\label{fig:groverQiskitDist}
 \end{figure}\par
 
-The results of measurement are shown in figure \ref{fig:groverQiskitDist}. As expected, the maximum probability for the marked element was reached after $2$
+The results of measurement are shown in figure \ref{fig:groverQiskitDist}. As
+expected, the maximum probability for the marked element was reached after $2$
 iterations, on the simulator, and it decreases in subsequent steps. However,
 the experimental result from the Toronto backend presents maximum probability
 for the marked element for $1$ step, with a fidelity of $0.96$. The optimal
@@ -122,7 +124,8 @@ taking into account the properties of NISQ computers. The following sections wil
 present the search problem adapted to several quantum walk models.
 
 \subsection{Searching with a Coined Quantum Walk}
-Following the structure of section \ref{sec:CoinedSearchSimul}, this section expands the coined quantum walk model into a circuit for searching.\par 
+Following the structure of section \ref{sec:CoinedSearchSimul}, this section
+expands the coined quantum walk model into a circuit for searching.\par 
 
 The modified unitary evolution operator is
 \begin{equation}
@@ -203,17 +206,16 @@ implemented as in figure \ref{fig:coinedQWSearchShiftCircuitQistkit}.
 	\caption{Qiskit circuit of the  flip-flop shift operator in the coined quantum walk search problem, for a complete graph of $N=8$.} 
 	\label{fig:coinedQWSearchShiftCircuitQistkit}
 \end{figure}\par
-%TODO: Estudar porque e que a dist muda logo para 0 (diffusion) em steps = 5
-%TODO: Melhorar texto.
+
 Lastly, measurements were performed. The results are plotted in figure
 \ref{fig:coinedSearchQiskitDist}. Maximum probability of the marked element was
-reached after $4$ steps in the simulator. Extra steps reduce that
-probability.  The resulting probability distribution from the Toronto backend
-is again unsatisfactory for the coined quantum walk model, with fidelities
-ranging from $0.58$ for $4$ steps, to $0.75$ for $2$ steps. This is expected,
-since the complete graph representation requires $N$ extra qubits for the coin,
-and swap operations which are decomposed into $3$ CNOTs each. The optimal
-number of steps that maximizes the probability of the marked element is also a
+reached after $4$ steps in the simulator. Extra steps reduce that probability.
+The resulting probability distribution from the Toronto backend is again
+unsatisfactory for the coined quantum walk model, with fidelities ranging from
+$0.58$ for $4$ steps, to $0.75$ for $2$ steps. This is expected, since the
+complete graph representation requires $N$ extra qubits for the coin, and swap
+operations which are decomposed into $3$ CNOTs each. The optimal number of
+steps that maximizes the probability of the marked element is also a
 contributing factor to the size of the circuit, requiring more iterations to
 achieve the same probability when compared to Grover's search discussed above. 
 \begin{figure}[!h]
@@ -223,15 +225,15 @@ achieve the same probability when compared to Grover's search discussed above.
 	\label{fig:coinedSearchQiskitDist}
 \end{figure}\par
 
-As mentioned previously, other models of the quantum walks that do
-not require coins or iterations will be studied in the following sections, in
-the context of the searching problem. The staggered quantum walk, for example,
-should be able to present better results when ran in a NISQ computer, considering the
+As mentioned previously, other models of the quantum walks that do not require
+coins or iterations will be studied in the following sections, in the context
+of the searching problem. The staggered quantum walk, for example, should be
+able to present better results when ran in a NISQ computer, considering the
 smaller Hilbert space due to its coinless nature.
 
 \subsection{Searching with a Staggered Quantum Walk}
-As discussed in section \ref{sec:StagSearchSimul}, the staggered quantum walk on
-a complete graph requires a single tessellation with associated polygon
+As discussed in section \ref{sec:StagSearchSimul}, the staggered quantum walk
+on a complete graph requires a single tessellation with associated polygon
 \begin{equation}
 	\ket{\alpha} = \frac{1}{\sqrt{N}} \sum_{x=0}^{N-1} \ket{x}.
 \end{equation}
@@ -249,11 +251,12 @@ then be defined as
 	\label{eq:unmodEvolOperatorStagSearch}
 \end{equation}
 This is a very useful representation since the exponent part of the operator is
-a diagonal matrix, which means that implementing the circuit in Qiskit is straightforward.\par 
+a diagonal matrix, which means that implementing the circuit in Qiskit is
+straightforward.\par 
 
-Now that the staggered quantum walk associated with the
-complete graph is defined, what remains to be done is to add an oracle to the evolution
-operator, as was done in equation \eqref{eq:stagSearchSimulModEvoOp},
+Now that the staggered quantum walk associated with the complete graph is
+defined, what remains to be done is to add an oracle to the evolution operator,
+as was done in equation \eqref{eq:stagSearchSimulModEvoOp},
 \begin{equation}
         U' = U\mathcal{O},
         \label{eq:stagSearchQiskitModEvoOp}
@@ -310,34 +313,36 @@ This circuit is very similar to the one in figure
 \ref{fig:groverDiffCircuitQistkit}, the difference being that in the staggered
 quantum walk search model one can control the value of $\theta$, as can be seen
 in equation \eqref{eq:unmodEvolOperatorStagSearch}. This influences how fast
-maximum probability of the marked element is achieved. Since Grover's
-algorithm is optimal, a value of $\theta=\frac{\pi}{2}$ yields a diffusion
-circuit equal to the one in figure \ref{fig:groverDiffCircuitQistkit}, implying
-that the staggered quantum walk is a more general model of quantum searching.\par
-
-Finally, measurement is performed and the results for several steps of the walk
-are shown in figure \ref{fig:stagSearchResultsToronto}.  
+maximum probability of the marked element is achieved. Since Grover's algorithm
+is optimal, a value of $\theta=\frac{\pi}{2}$ yields a diffusion circuit equal
+to the one in figure \ref{fig:groverDiffCircuitQistkit}, implying that the
+staggered quantum walk is a more general model of quantum searching.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/StaggeredQW/Search/stagSearchToronto_N3_S0123.png}
 	\caption{Probability distributions of the staggered quantum walk search problem for several steps, in a complete graph of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend.}
 	\label{fig:stagSearchResultsToronto}
-\end{figure}
-The circuit for each step of the walk was run both in the \textit{QASM}
-simulator and IBM's backend named Toronto. The experiment was performed with
-$3000$ shots in both cases, and the probability distributions show that this
-model is indeed more suited for a NISQ computer than the previous case.
-However, unlike the simulator, maximum probability of the marked vertex was
-achieved in $1$ step of the walk instead of the expected $2$ steps, as in the Grover algorithm. Looking at the $1$ step case in the
-simulator, one can see that the probability of vertex $\ket{4}$ is very close
-to the maximum, while the circuit has about half of the operations of the $2$
-step case. This means it is not surprising that the smaller circuit produces
-higher results for the probability of the marked vertex. 
+\end{figure}\par
+
+Finally, measurement is performed and the results for several steps of the walk
+are shown in figure \ref{fig:stagSearchResultsToronto}.  The circuit for each
+step of the walk was run both in the \textit{QASM} simulator and IBM's backend
+named Toronto. The experiment was performed with $3000$ shots in both cases,
+and the probability distributions show that this model is indeed more suited
+for a NISQ computer than the previous case.  However, unlike the simulator,
+maximum probability of the marked vertex was achieved in $1$ step of the walk
+instead of the expected $2$ steps, as in the Grover algorithm. Looking at the
+$1$ step case in the simulator, one can see that the probability of vertex
+$\ket{4}$ is very close to the maximum, while the circuit has about half of the
+operations of the $2$ step case. This means it is not surprising that the
+smaller circuit produces higher results for the probability of the marked
+vertex. 
 %TODO: Talvez melhorar as fidelidades com o intervalo de confianca. 
 This can be further confirmed by the fidelities of each of the states, which
-are approximately $0.954$ and $0.780$ for $1$ and $2$ steps, respectively. Thus, the former circuit produces better results because of the number
-of operations, even though that the latter should theoretically yield the
-highest probability.\par 
+are approximately $0.954$ and $0.780$ for $1$ and $2$ steps, respectively.
+Thus, the former circuit produces better results because of the number of
+operations, even though that the latter should theoretically yield the highest
+probability.\par 
 
 Even though these results are a great improvement with respect to the algorithm using
 the coined quantum walk, the staggered model is still discrete, meaning its
@@ -363,8 +368,8 @@ where $\phi(t)$ is a global phase, $A$ is the adjacency matrix and the oracle de
 \end{equation}
 for $M$ being the set of marked elements.\par
 
-This section will focus on constructing and analyzing the circuit corresponding to the
-continuous-time quantum walk search problem, to be performed over a
+This section will focus on constructing and analyzing the circuit corresponding
+to the continuous-time quantum walk search problem, to be performed over a
 complete graph whose adjacency matrix is the following
 \begin{equation}
   A = 	\begin{pmatrix}
@@ -402,6 +407,7 @@ This can be easily translated into a circuit scheme as in figure
  	\caption{General circuit for the search problem using the continuous-time quantum walk model.}
 	\label{fig:contSearchCircuit}
 \end{figure}\par
+
 Consider the case of a graph of size $N=2^3=8$ and trotter number of $r=1$. The
 corresponding Qiskit circuit is shown in figure \ref{fig:contSearchCircuit}.
 \begin{figure}[!h]
@@ -412,9 +418,14 @@ corresponding Qiskit circuit is shown in figure \ref{fig:contSearchCircuit}.
 \end{figure}
 The system starts out in an uniform superposition followed by the application
 of the oracle operator as can be seen in figure
-\ref{fig:contSearchOracleCircQistkit}. Note that the circuit was obtained with Qiskit's \textit{diagonal} function that takes the diagonal entries of
-the operator corresponding to the oracle defined in equation
-\eqref{eq:suzTrotter}. 
+\ref{fig:contSearchOracleCircQistkit}. Note that the circuit was obtained with
+Qiskit's \textit{diagonal} function that takes the diagonal entries of the
+operator corresponding to the oracle defined in equation
+\eqref{eq:suzTrotter}.\par
+
+The next operation to be applied is the QFT but, because a complete graph is
+considered, the AQFT can be used with a degree of $m=2$, which means the
+circuit will simply amount to Hadamard transforms, thus reducing its depth.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.30]{img/Qiskit/ContQuantumWalk/Search/Circuits/circOracle_N3_S2.png}
@@ -422,41 +433,34 @@ the operator corresponding to the oracle defined in equation
 	\label{fig:contSearchOracleCircQistkit}
 \end{figure}\par
 
-The next operation to be applied is the QFT but, because a
-complete graph is considered, the AQFT can be used with a degree of $m=2$,
-which means the circuit will simply amount to Hadamard transforms, thus reducing
-its depth.\par
-
 Then, the operator associated with the adjacency matrix is shown in figure
 \ref{fig:contSearchAdjCircQistkit}. Since $A$ is the diagonal adjacency matrix
 of a complete graph, it is easily implemented using the aforementioned
-\textit{diagonal} function.
+\textit{diagonal} function.\par
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.30]{img/Qiskit/ContQuantumWalk/Search/Circuits/circAjd_N3_S2.png}
 	\caption{Qiskit circuit of the  diagonal operator associated with the adjacency matrix in the continuous-time quantum walk search problem, for a complete graph of size $N=8$, marked element $\ket{m}=\ket{4}$, time $t=\frac{\pi}{2} \sqrt{8}$ and $\gamma = \frac{1}{8}$.}
 	\label{fig:contSearchAdjCircQistkit}
-\end{figure}\par
-
+\end{figure}
 Finally, the results of circuit measurement can be seen in figure
 \ref{fig:contSearchResultCircQistkit}. Even though the circuit depth does not
 scale up with time, introducing the oracle operation to the continuous-time
 quantum walk model appears to make the circuit hard to run in a NISQ computer.
 Note that, theoretically, $2$ iterations of the Suzuki-Trotter expansion are
 needed for maximum probability of the marked vertex to be achieved in optimal
-time. 
+time.  In practice, however, greater probability for this element is achieved
+when only $1$ iteration is performed since the smaller circuit seems to produce
+a greater fidelity of $0.71$, when compared to a fidelity of $0.59$ for the $2$
+iteration case. The approximate quantum Fourier transform has also a positive
+impact, increasing fidelity from $0.60$ when the full QFT circuit is used, to
+the aforementioned $0.71$ when only Hadamard transformations are performed.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.40]{img/Qiskit/ContQuantumWalk/Search/ContQW_N3_S2.png}
 	\caption{Probability distributions of the continuous-time quantum walk search problem for several time intervals, in a complete graph of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend.}
 	\label{fig:contSearchResultCircQistkit}
-\end{figure}
-In practice, however, greater probability for this element is achieved when
-only $1$ iteration is performed since the smaller circuit seems to produce a
-greater fidelity of $0.71$, when compared to a fidelity of $0.59$ for the $2$
-iteration case. The approximate quantum Fourier transform has also a positive
-impact, increasing fidelity from $0.60$ when the full QFT circuit is used, to
-the aforementioned $0.71$ when only Hadamard transformations are performed.\par
+\end{figure}\par
 
 In conclusion, when comparing the different quantum walk models studied in
 previous sections, the coined quantum walk seems to be the least suited for

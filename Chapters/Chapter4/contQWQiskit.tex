@@ -88,56 +88,60 @@ This representation is very easily translatable to a quantum circuit, as shown i
 	\caption{General circuit for the continuous-time quantum walk.}
 	\label{fig:contCircuit}
 \end{figure}\par
+
+The circuit can now be constructed making use of the \textit{diagonal} function
+provided by Qiskit, which decomposes diagonal operators based on the method
+presented in theorem 7 of \cite{Shende06}. The other tool used was the quantum
+Fourier transform (QFT) also provided by the Qiskit package. Figure
+\ref{fig:contQWCircuitQistkit} shows the implementation of the circuit for
+$2^3=8$ graph nodes.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.25]{img/Qiskit/ContQuantumWalk/Circuits/circContQW_N3_S1.png}
 	\caption{Qiskit circuit for the continuous-time quantum walk, for a line graph of size $N=8$ and initial condition $\ket{\psi_0}=\ket{4}$, for time $t$.} 
 	\label{fig:contQWCircuitQistkit}
-\end{figure}
-The circuit can now be constructed making use of the \textit{diagonal} function
-provided by Qiskit, which decomposes diagonal operators based on the method
-presented in theorem 7 of \cite{Shende06}. The other tool used was the quantum
-Fourier transform (QFT) also provided by the Qiskit package. Figure \ref{fig:contQWCircuitQistkit} shows the
-implementation of the circuit for 3 qubits or $2^3=8$ graph nodes and $t=3$.
+\end{figure}\par
+
+The quantum Fourier transform circuit,presented in figure
+\ref{fig:qftCircuitQiskit}, is well known and . The inverse QFT is similarly
+constructed with the negation of the rotations associated with the QFT.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.28]{img/Qiskit/ContQuantumWalk/Circuits/circQft_N3_S1.png}
 	\caption{Qiskit circuit of the quantum Fourier transform for a line graph of size $N=8$.} 
 	\label{fig:qftCircuitQiskit}
 \end{figure}\par
-%TODO: Perceber como explicar a QFT.
 
-The quantum Fourier transform circuit,presented in figure
-\ref{fig:qftCircuitQiskit}, is well known and . The inverse QFT is similarly constructed with the
-negation of the rotations associated with the QFT.\par
-\begin{figure}[!h]
-	\centering
-	\includegraphics[scale=0.50]{img/Qiskit/ContQuantumWalk/Circuits/circDiag_N3_S1.png}
-	\caption{Qiskit circuit of the diagonal operator associated with the adjacency matrix, for a line graph of size $N=8$.}
-	\label{fig:diagCircuitQiskit}
-\end{figure}
 The circuit associated with the diagonal operator is shown in figure
 \ref{fig:diagCircuitQiskit}. Furthermore equation \eqref{eq:diagUniOpCont} says
 that time is simply a constant inside the exponential, which means that the
 diagonal operator's circuit will not need extra operations when increasing
 time. It will only need different rotations and differ in global phase.  This
 is an advantage when comparing to previous discrete models,  where each extra
-step required another increment and decrement gates.\par
+step required another increment and decrement gates.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.50]{img/Qiskit/ContQuantumWalk/Circuits/circDiag_N3_S1.png}
+	\caption{Qiskit circuit of the diagonal operator associated with the adjacency matrix, for a line graph of size $N=8$.}
+	\label{fig:diagCircuitQiskit}
+\end{figure}\par
 
 Finally, the circuit was measured. The resulting probability distributions
 can be seen in figure \ref{fig:contQWQiskitDist}.
+
+The dynamics of the walk, when ran on the Toronto backend, is closer to the
+simulation than the previous examples. As expected, since the size of the
+circuit does not scale with time, a fidelity of approximately $0.97$ was
+achieved for $t=3$. For $t=0,1,2$, the respective fidelities were $0.96, 0.90,
+0.92$, which are small improvements when compared to the staggered quantum
+walk.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.4]{img/Qiskit/ContQuantumWalk/ContQW_N3_S0123.png}
 	\caption{Probability distributions of the continuous-time quantum walk for several steps in a line graph of size $N=8$. The blue bar plot represents a circuit run in the QASM simulator, and the orange bar plot on IBM's Toronto backend.} 
 	\label{fig:contQWQiskitDist}
 \end{figure}
-The dynamics of the walk, when ran on the Toronto backend, is closer to the
-simulation than the previous examples. As expected, since the size of the
-circuit does not scale with time, a fidelity of approximately $0.97$ was
-achieved for $t=3$. For $t=0,1,2$, the respective fidelities were $0.96, 0.90,
-0.92$, which are small improvements when compared to the staggered quantum
-walk. However, this stays relatively constant with increasing time, making this type
+However, this stays relatively constant with increasing time, making this type
 of circuit well suited for studying the dynamics of the continuous-time quantum
 walk.
 

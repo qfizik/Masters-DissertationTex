@@ -63,40 +63,40 @@ is possible to have any number of nodes, given that the proper correction is
 made, as was shown in the work of \cite{douglaswang07}. The method used for
 this correction is called  \textit{Gray Code Ordering} proposed by
 \cite{alexslepoy06}, whereby a certain arrangement of CNOT gates results in
-control states only differing by a single bit.\par
+control states only differing by a single bit.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.32]{img/Qiskit/CoinedQuantumWalk/Circuits/circCoinedQW_N3_S3.png}
 	\caption{Qiskit circuit for the coined quantum walk, for a line graph of size $N=8$ and initial condition $\ket{\psi_0}=\ket{4}$, with 3 steps and the Hadamard coin.} 
 	\label{fig:coinedQWCircuitQistkit}
-\end{figure}
+\end{figure}\par
+
 This circuit was implemented in Qiskit, as can be seen in figure
 \ref{fig:coinedQWCircuitQistkit}. In this example, the increment and decrement
 sequence was applied three times on a graph of size $2^3 =8$ nodes. The
 starting position of the walker was set to $\psi(0) = \ket{4}$, and the
-Hadamard coin was used. The first block after the barrier is the sequence of
-operations that will increment the state of the walker, as shown in figure
-\ref{fig:incrCircuitQistkit}. The generalized CNOT gates are implemented using
-Qiskit's \textit{mcx} function, which implements the decomposition presented in
-lemma 7.5 of \cite{barenco95} to create CNOT gates up to four controls, and the
-aforementioned Gray Code for more generalized instances of the gate.
+Hadamard coin was used.
 \begin{figure}[!h]
-	\centering
-	\includegraphics[scale=0.32]{img/Qiskit/CoinedQuantumWalk/Circuits/circIncr_N3_S3.png}
-	\caption{Qiskit circuit of the increment operator for a line graph of size $N=8$.} 
-	\label{fig:incrCircuitQistkit}
+        \begin{subfigure}[h]{0.41\textwidth}
+        \includegraphics[width=\linewidth]{img/Qiskit/CoinedQuantumWalk/Circuits/circIncr_N3_S3.png}}
+        \caption{Increment.}\label{fig:incQiskit}
+        \end{subfigure}\hfill
+        \begin{subfigure}[h]{0.50\textwidth}
+        \includegraphics[width=\linewidth]{img/Qiskit/CoinedQuantumWalk/Circuits/circDecr_N3_S3.png}
+        \caption{Decrement.}\label{fig:decQiskit}
+        \end{subfigure}\hfill
+        \caption{Qiskit circuits of the components of the shift operator for the coined quantum walk, for a line graph of size $N=8$.}
+        \label{fig:qiskitShiftOperator}
 \end{figure}\par
 
-The next set of operations perform the decrement of the state of the walker,
-which is just an increment block with its controls negated, as is shown in
-figure \ref{fig:decrCircuitQistkit}. The rest of the circuit is just the
-repetition of these operations as a function of the number of steps required.
-\begin{figure}[!h]
-	\centering
-	\includegraphics[scale=0.32]{img/Qiskit/CoinedQuantumWalk/Circuits/circDecr_N3_S3.png}
-	\caption{Qiskit circuit of the decrement operator for a line graph of size $N=8$.} 
-	\label{fig:decrCircuitQistkit}
-\end{figure}\par
+The first block after the barrier is the sequence of operations that will
+increment and decrement the state of the walker, as shown in figure
+\ref{fig:qiskitShiftOperator}. The generalized CNOT gates are implemented using
+Qiskit's \textit{mcx} function, which implements the decomposition presented in
+lemma 7.5 of \cite{barenco95} to create CNOT gates up to four controls, and the
+aforementioned Gray Code for more generalized instances of the gate. The rest
+of the circuit is just the repetition of these operations as a function of the
+number of steps required.
 
 Lastly, the circuit is measured. The results can be seen in figure
 \ref{fig:coinedQWQiskitDist}. These results can be verified by calculating the

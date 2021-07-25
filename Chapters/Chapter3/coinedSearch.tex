@@ -78,7 +78,12 @@ operator can then be written as
 \begin{equation}
 	U' = S(I \otimes G)\mathcal{O'} = S(I \otimes G)\mathcal{O} \otimes I = S (\mathcal{O} \otimes G),\label{eq:modifiedEvoCoined}
 \end{equation}
-and the state of the system will evolve according to equation \eqref{eq:sysStateSearch}.\par 
+and the state of the system will evolve according to equation \eqref{eq:sysStateSearch}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.40]{img/CoinedQuantumWalk/Search/CoinedSearch163264.png}
+	\caption{Probability of one marked element in the coined quantum walk search, as a function of the number of steps, for complete graphs of size $N=16$, $32$ and $64$.}\label{fig:coinedSearch}
+\end{figure}\par
 
 As was shown in \cite{REN1}, maximum probability of the marked vertex is
 achieved after $\frac{\pi}{2}\sqrt{N}$ steps. Figure \ref{fig:coinedSearch} is
@@ -88,12 +93,8 @@ close to one at \textit{approximately} the predicted ideal steps, because of
 the discrete nature of the walk. The probability distributions have a
 stair-like shape, because transitions in this model only occur on even numbered
 time steps, because of the way the unmodified evolution
-operator was constructed.
-\begin{figure}[!h]
-	\centering
-	\includegraphics[scale=0.40]{img/CoinedQuantumWalk/Search/CoinedSearch163264.png}
-	\caption{Probability of one marked element in the coined quantum walk search, as a function of the number of steps, for complete graphs of size $N=16$, $32$ and $64$.}\label{fig:coinedSearch}
-\end{figure}\par
+operator was constructed.\par
+
 Next section is devoted to the study of the search problem using the
 staggered quantum walk model. The algorithm is still discrete. However, since it
 does not use a coin, its Hilbert space will be much smaller. In the coined

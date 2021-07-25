@@ -6,7 +6,6 @@ adjacent vertices, firstly introduced by \cite{montrollweiss1965}. Consider a
 graph $G$ with $N$ vertices and no self-loops, this walk can be defined by the
 linear differential equation that describes the probability of jumping to a
 connected vertex in any given time 
-%TODO: \textcolor{red}{pode colocar G(V,E) e depois especificar que (i,j) é uma aresta}
 \begin{equation}
 	\frac{dp_i(t)}{dt} = \gamma \sum_j L_{ij} p_j(t), \label{eq:classicalContWalk}
 \end{equation}
@@ -36,9 +35,9 @@ where $\hat{H} = -\gamma L$ is the Hamiltonian of the system. More explicitly,
 	\end{cases}.
 	\label{Hamilt}
 \end{equation}\par
+
 A general state of a system $\ket{\psi(t)}$ can be written as a function of
 its complex amplitudes 
-%TODO: \textcolor{red}{acredito que seja contrária a relação, as amplitudes que são descritas pelo estado através da equação 28}
 \begin{equation}
 	q_i = \braket{i|\psi(t)},
 \end{equation}
@@ -47,37 +46,34 @@ which means equation \eqref{shrodinger} can be rewritten as
 	i\hbar \frac{dq_i(t)}{dt} = \sum_j \hat{H}_{ij} q_j(t).
 	\label{eq:contWalkShrod}
 \end{equation}
-Comparing equations \eqref{eq:contWalkShrod} and \eqref{eq:classicalContWalk}, the
-Laplacian is replaced by the Hamiltonian, and the probabilities by
+Comparing equations \eqref{eq:contWalkShrod} and \eqref{eq:classicalContWalk},
+the Laplacian is replaced by the Hamiltonian, and the probabilities by
 amplitudes. One of the main differences is the complex phase $i$, which will
-result in a very different behaviour. 
-%TODO: \textcolor{red}{você pode dizer que a 29 é uma quantização da 24}\par
-Setting $\hbar = 1$ and solving the differential equation results in the
-evolution operator of this walk 
-%TODO: \textcolor{red}{acho que podemos ajustar, talvez a equação 32 deva subir, porque ela que é solução da equação diferencial}%mencionar redimens. devido ao planck modificado
+result in a very different behaviour.  Setting $\hbar = 1$ and solving the
+differential equation results in the evolution operator of this walk 
 \begin{equation}
 	U(t) = e^{-iHt} = e^{i(-\gamma L)t} = e^{-i\gamma(A+D)t},
 \end{equation}
 In the regular graph case, where $D$ is simply the degree of the whole graph
 multiplied by the identity matrix, $A$ and $D$ will commute, meaning that the
 evolution operator can be written in terms of the adjacency matrix 
-%TODO: \textcolor{red}{ficou muito bom isso daqui}
 \begin{equation}
 	U(t) = e^{-i\gamma A t + i\gamma D t} = e^{-i\gamma A t} e^{i\gamma D t} = \phi(t) e^{-i\gamma A t} 
 	\label{eq:contSimulUniOp}
 \end{equation}
-since the degree matrix becomes a global phase.
-%that can be verified by expanding the %exponential function in Taylor series.
-%Demonstrar com eq dif ordinarias de variaveis separaveis.
-Applying this operator to an initial condition $\psi(0)$, will give the state
-of the system at a time $t$
+since the degree matrix becomes a global phase.  Applying this operator to an
+initial condition $\psi(0)$, will give the state of the system at a time $t$
 \begin{equation}
 	\ket{\psi(t)} = U(t)\ket{\psi(0)}.
 \end{equation}\par
-
-Considering a uni-dimensional quantum system, each vertex
-will have at most 2 other neighboring vertices, reducing equation \eqref{Hamilt}
-to
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.40]{img/ContQuantumWalk/ctqwMultipleTime.png}
+	\caption{Probability distribution for the continuous-time quantum walk on a line, at $t=40$, $80$ and $120$, with initial condition $\ket{\psi(0)}=\ket{0}$ and $\gamma=\frac{1}{2\sqrt{2}}$.} 
+	\label{fig:contdist0}
+\end{figure}
+Considering a uni-dimensional quantum system, each vertex will have at most 2
+other neighboring vertices, reducing equation \eqref{Hamilt} to
 \begin{equation}
 	\hat{H}_{ij} = \begin{cases} 
 		2\gamma, & \mbox{if } i= j; \\ 
@@ -89,13 +85,6 @@ to
 For a more detailed visualization, this quantum walk model was coded in Python
 and figure \ref{fig:contdist0} was obtained setting the transition rate to
 $\gamma=\frac{1}{2\sqrt{2}}$ the initial condition to $\ket{\psi(0)} = \ket{0}$ 
-%TODO: \textcolor{red}{cortou a figura}
-\begin{figure}[!h]
-	\centering
-	\includegraphics[scale=0.40]{img/ContQuantumWalk/ctqwMultipleTime.png}
-	\caption{Probability distribution for the continuous-time quantum walk on a line, at $t=40$, $80$ and $120$, with initial condition $\ket{\psi(0)}=\ket{0}$ and $\gamma=\frac{1}{2\sqrt{2}}$.} 
-	\label{fig:contdist0}
-\end{figure}
 A brief look at figure \ref{fig:contdist0} reveals several similarities to
 previous models. The property of having two peaks away from the origin and low
 probability near the origin is present across all the quantum walks. However, in
