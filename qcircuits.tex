@@ -326,6 +326,17 @@
 	\caption{General decomposition of a multiplexed $R_z$ gate.}
 	\label{fig:coinedCircuit}
 \end{figure}
+\clearpage
+
+\begin{figure}[!h]
+	\[  	\Qcircuit @C=1.5em @R=1.3em { 
+	               &   & \gate{R_z(\frac{\theta_0 + \theta_1}{2})} &\targ         & \gate{R_z(\frac{\theta_0 - \theta_1}{2})} & \targ    & \qw \\
+                   &   & \qw        & \ctrl{-1}    &  \qw             & \ctrl{-1} & \qw    
+		          }\]
+	\centering
+	\caption{General decomposition of a multiplexed $R_z$ gate.}
+	\label{fig:coinedCircuit}
+\end{figure}
 
 
 \end{document}
