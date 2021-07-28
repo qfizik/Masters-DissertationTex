@@ -259,14 +259,14 @@
 	\label{fig:stagSearchCircuit}
 \end{figure}
 
-\begin{figure}[!h]
-	\[ \Qcircuit @C=1.8em @R=1.5em {& & & & \mbox{ O(\sqrt{N}) times}  & & &\\
-	& & {/^{\otimes n}} \qw &\gate{H}  & \gate{O_M} &  \gate{G} & \qw &\qw \gategroup{2}{5}{2}{6}{.8em}{--}
-		          } \]
-	\centering
-	\caption{Temp}
-	\label{fig:groverSearchCircuit}
-\end{figure}
+% \begin{figure}[!h]
+% 	\[ \Qcircuit @C=1.8em @R=1.5em {& & & & \mbox{ O(\sqrt{N}) times}  & & &\\
+% 	& & {/^{\otimes n}} \qw &\gate{H}  & \gate{O_M} &  \gate{G} & \qw &\qw \gategroup{2}{5}{2}{6}{.8em}{--}
+% 		          } \]
+% 	\centering
+% 	\caption{Temp}
+% 	\label{fig:groverSearchCircuit}
+% \end{figure}
 
 \begin{figure}[!h]
 	\[ \Qcircuit @C=1.8em @R=1.5em { & & & & \mbox{ Repeat $O(\sqrt{N})$ times}  &\\
@@ -277,5 +277,55 @@
 	\caption{Douglas wang coined quantum walk circuit}
 	\label{fig:coinedSearchCircuit}
 \end{figure}
+\clearpage
+
+\begin{figure}[!h]
+	\[ \Qcircuit @C=1.5em @R=1.3em { 
+	               &   & \multigate{1}{\Delta} &\qw  & &\raisebox{-2.2em}{\equiv} & \\
+				   &  {/} &\ghost{\Delta} &\qw
+		          } 
+		\Qcircuit @C=1.5em @R=1.0em { 
+	               &        &\qw     & \gate{Rz} \cwx[1] & \qw \\
+				   & {/} & \gate{\Delta}    & \controlo  \qw   & \qw     
+		          }\]
+	\centering
+	\caption{Decomposition of diagonal operators.}
+	\label{fig:coinedCircuit}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!h]
+	\[ \Qcircuit @C=1.5em @R=1.3em { 
+	               & \gate{R_z} \cwx[1] &\qw   &\raisebox{-2.2em}{\equiv} & \\
+				   & \controlo  \qw  &\qw
+		          } 
+		\Qcircuit @C=1.5em @R=1.3em { 
+	               & \gate{R_z} &\targ         & \gate{R_z} & \targ    & \qw \\
+				   & \qw        & \ctrl{-1}    &  \qw       & \ctrl{-1} & \qw    
+		          }\]
+	\centering
+	\caption{Decomposition of a singly-multiplexed $R_z$ gate.}
+	\label{fig:coinedCircuit}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!h]
+	\[ \Qcircuit @C=1.5em @R=1.3em { 
+	              & & \gate{R_z} \cwx[1]        &\qw   &&\raisebox{-4.5em}{\equiv} & \\
+				  &{/} & \controlo \cwx[1] \qw  &\qw\\
+				  &   & \controlo  \qw          &\qw
+		          } 
+		\Qcircuit @C=1.5em @R=1.3em { 
+	               &   & \gate{R_z} \cwx[1] &\targ         & \gate{R_z}\cwx[1] & \targ    & \qw \\
+				   &{/}& \controlo \qw      & \qw          &  \controlo \qw    & \qw & \qw\\
+                   &   & \qw                & \ctrl{-2}    &  \qw             & \ctrl{-2} & \qw    
+		          }\]
+	\centering
+	\caption{General decomposition of a multiplexed $R_z$ gate.}
+	\label{fig:coinedCircuit}
+\end{figure}
+
 
 \end{document}
